@@ -15,15 +15,15 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // Те же alias'ы что и platform/desktop/vite.config.mjs — site импортирует
+      // Те же alias'ы что и cortex/desktop/vite.config.mjs — site импортирует
       // реальные desktop-компоненты (LauncherView.vue и т.п.) без копирования.
-      "@": path.resolve(__dirname, "../platform/desktop/src"),
-      "@shared": path.resolve(__dirname, "../platform/desktop/shared"),
+      "@": path.resolve(__dirname, "../cortex/desktop/src"),
+      "@shared": path.resolve(__dirname, "../cortex/desktop/shared"),
       "@kosmos/visuals/theme/css": path.resolve(
         __dirname,
-        "../packages/visuals/theme/css-variables.css",
+        "../imago/theme/css-variables.css",
       ),
-      "@kosmos/visuals": path.resolve(__dirname, "../packages/visuals"),
+      "@kosmos/visuals": path.resolve(__dirname, "../imago"),
     },
     dedupe: ["vue"],
   },
