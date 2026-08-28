@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 const config = JSON.parse(await readFile("vercel.json", "utf8"));
@@ -5,7 +6,12 @@ if (config.outputDirectory !== "dist" || config.installCommand !== "bun install"
 const html = readFileSync("index.html", "utf8");
 if (!html.includes('id="app"')) throw new Error("index.html is missing the app mount");
 if (process.argv.includes("--config")) {
-  if (existsSync(".tsbuildinfo")) throw new Error("generated .tsbuildinfo must not be tracked");
+  try {
+    execFileSync("git", ["ls-files", "--error-unmatch", ".tsbuildinfo"], { stdio: "ignore" });
+    throw new Error("generated .tsbuildinfo must not be tracked");
+  } catch (error) {
+    if (error?.status === undefined) throw error;
+  }
   console.log("deployment config smoke passed");
 } else {
   if (existsSync("dist/index.html")) {
