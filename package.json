@@ -13,6 +13,7 @@
     "build": "bun run typecheck && vite build",
     "preview": "vite preview",
     "check:config": "node scripts/site-smoke.mjs --config",
+    "check:quick": "bun run lint && bun run format:check && bun run typecheck",
     "check": "bun run lint && bun run format:check && bun run typecheck && bun run test && bun run build && bun run check:config",
     "prepare": "lefthook install"
   },
