@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "bun install && bun run build",
+  "buildCommand": "pnpm install --frozen-lockfile && pnpm run build",
   "outputDirectory": "dist",
-  "installCommand": "bun install",
+  "installCommand": "pnpm install --frozen-lockfile",
   "framework": null,
   "cleanUrls": true,
   "headers": [

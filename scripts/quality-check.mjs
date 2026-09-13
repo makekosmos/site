@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 const mode = process.argv[2] ?? "--lint";
 const files = execFileSync("git", ["ls-files"], { encoding: "utf8" }).trim().split(/\r?\n/).filter(Boolean)
-  .filter((file) => !file.startsWith("bun.lock") && !file.endsWith(".tsbuildinfo"));
+  .filter((file) => !file.startsWith("pnpm-lock.yaml") && !file.endsWith(".tsbuildinfo"));
 for (const file of files) {
   let source; try { source = readFileSync(file, "utf8"); } catch { continue; }
   if (/[ \t]+$/m.test(source)) throw new Error(`trailing whitespace: ${file}`);

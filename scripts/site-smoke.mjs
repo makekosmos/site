@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 const config = JSON.parse(await readFile("vercel.json", "utf8"));
-if (config.outputDirectory !== "dist" || config.installCommand !== "bun install" || !config.buildCommand.includes("bun run build")) throw new Error("invalid Vercel build/routing contract");
+if (config.outputDirectory !== "dist" || config.installCommand !== "pnpm install --frozen-lockfile" || !config.buildCommand.includes("pnpm run build")) throw new Error("invalid Vercel build/routing contract");
 const html = readFileSync("index.html", "utf8");
 if (!html.includes('id="app"')) throw new Error("index.html is missing the app mount");
 if (process.argv.includes("--config")) {
