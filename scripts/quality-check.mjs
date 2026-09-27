@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 const mode = process.argv[2] ?? "--lint";
-const files = execFileSync("git", ["ls-files"], { encoding: "utf8" }).trim().split(/\r?\n/).filter(Boolean)
+const files = execFileSync("git", ["ls-files", "-z"], { encoding: "utf8" }).split("\0").filter(Boolean)
   .filter((file) => !file.startsWith("bun.lock") && !file.endsWith(".tsbuildinfo"));
 for (const file of files) {
   let source; try { source = readFileSync(file, "utf8"); } catch { continue; }
