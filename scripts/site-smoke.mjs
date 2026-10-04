@@ -7,12 +7,9 @@ if (config.outputDirectory !== "dist" || config.installCommand !== "bun install"
 const html = readFileSync("index.html", "utf8");
 if (!html.includes('id="app"')) throw new Error("index.html is missing the app mount");
 if (process.argv.includes("--config")) {
-  try {
-    execFileSync("git", ["ls-files", "--error-unmatch", ".tsbuildinfo"], { stdio: "ignore" });
-    throw new Error("generated .tsbuildinfo must not be tracked");
-  } catch (error) {
-    if (error?.status !== 1) throw error;
-  }
+  const trackedBuildInfo = execFileSync("git", ["ls-files", "-z", "--", "*.tsbuildinfo"], { encoding: "utf8" })
+    .split("\0").filter(Boolean);
+  if (trackedBuildInfo.length > 0) throw new Error(`generated tsbuildinfo must not be tracked: ${trackedBuildInfo.join(", ")}`);
   console.log("deployment config smoke passed");
 } else {
   if (!existsSync("dist/index.html")) throw new Error("dist/index.html is missing — run `bun run build` before site smoke");
