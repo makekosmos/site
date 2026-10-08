@@ -5,8 +5,8 @@ import type { Release } from "../useLatestRelease";
 import { AppleLogo, ArrowRight, WindowsLogo } from "./Icons";
 
 const CTA_LABEL = {
-  mac: "Скачать для macOS",
-  windows: "Скачать для Windows",
+  mac: "Download for macOS",
+  windows: "Download for Windows",
 } as const;
 
 export function Hero({ release }: { release: Release | null }) {
@@ -15,13 +15,13 @@ export function Hero({ release }: { release: Release | null }) {
   return (
     <section className="hero">
       <h1 className="hero-title reveal" style={{ "--i": 0 } as React.CSSProperties}>
-        Личный мир
+        A personal world
         <br />
-        для всего важного
+        for everything that matters
       </h1>
       <p className="hero-lede reveal" style={{ "--i": 1 } as React.CSSProperties}>
-        Mundus собирает задачи, заметки, диктовку и фокус в одном local-first приложении.
-        Нативные агенты помогают, а данные остаются у тебя, а не в чужом облаке.
+        Mundus brings tasks, notes, dictation and focus together in one local-first app.
+        Native agents lend a hand, while your data stays with you, not in someone else's cloud.
       </p>
 
       <div className="cta reveal" style={{ "--i": 2 } as React.CSSProperties}>
@@ -35,18 +35,18 @@ export function Hero({ release }: { release: Release | null }) {
           )}
         </a>
         <a className="pill pill-lg" href={DOWNLOAD_URL}>
-          {platform ? CTA_LABEL[platform] : "Скачать Mundus"}
+          {platform ? CTA_LABEL[platform] : "Download Mundus"}
           <ArrowRight />
         </a>
       </div>
 
       <p className="hero-platforms reveal" style={{ "--i": 3 } as React.CSSProperties}>
-        Доступно для{" "}
+        Available for{" "}
         <a href={DOWNLOAD_URL}>
           <AppleLogo />
           macOS
         </a>{" "}
-        и{" "}
+        and{" "}
         <a href={DOWNLOAD_URL}>
           <WindowsLogo />
           Windows

@@ -9,12 +9,12 @@ export function Nav() {
         <Logo />
         <span>Mundus</span>
       </a>
-      <nav className="nav-links" aria-label="Ссылки">
-        <a href={RELEASES_URL}>Релизы</a>
+      <nav className="nav-links" aria-label="Links">
+        <a href={RELEASES_URL}>Releases</a>
         <a href={REPO_URL}>GitHub</a>
       </nav>
       <a className="pill pill-sm" href={DOWNLOAD_URL}>
-        Скачать
+        Download
         <ArrowRight />
       </a>
     </header>
