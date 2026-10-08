@@ -1,6 +1,6 @@
-# Kosmos marketing site
+# Mundus marketing site
 
-Vue/Vite marketing site with Vercel deployment configuration.
+React + Vite marketing site for Mundus, with Vercel deployment configuration.
 
 ## Verification
 

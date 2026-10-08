@@ -1,12 +1,12 @@
 {
-  "name": "kosmos-marketing-site",
+  "name": "mundus-site",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "packageManager": "bun@1.3.14",
   "scripts": {
     "dev": "vite",
-    "typecheck": "vue-tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "lint": "node scripts/quality-check.mjs --lint",
     "format:check": "node scripts/quality-check.mjs --format",
     "test": "node scripts/site-smoke.mjs",
@@ -15,21 +15,23 @@
     "check:config": "node scripts/site-smoke.mjs --config",
     "check:quick": "bun run lint && bun run format:check && bun run typecheck",
     "check": "bun run lint && bun run format:check && bun run typecheck && bun run build && bun run test && bun run check:config",
-    "prepare": "lefthook install"
+    "prepare": "git rev-parse --git-dir >/dev/null 2>&1 && lefthook install || true"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
-    "@fontsource/ibm-plex-mono": "^5.2.7",
-    "@lucide/vue": "^1.16.0",
-    "vue": "^3.6.0-beta.9"
+    "@fontsource-variable/onest": "^5.3.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "shaders": "4.0.2"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
-    "@vitejs/plugin-vue": "^5.0.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
     "lefthook": "1.8.4",
     "typescript": "~5.8.3",
-    "vite": "^6.4.3",
-    "vue-tsc": "^3.3.11"
+    "vite": "^6.4.3"
   },
   "overrides": {
     "nanoid": "3.3.18",

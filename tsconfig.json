@@ -4,21 +4,15 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
     "types": ["vite/client", "node"],
-    "paths": {
-      "@/*": ["../cortex/desktop/src/*"],
-      "@shared/*": ["../cortex/desktop/shared/*"],
-      "@kosmos/visuals": ["../imago/index.ts"],
-      "@kosmos/visuals/*": ["../imago/*"]
-    },
     "incremental": true,
     "tsBuildInfoFile": ".tsbuildinfo"
   },
-  "include": ["src/**/*", "vite.config.ts", "../cortex/desktop/src/global.d.ts"]
+  "include": ["src/**/*", "vite.config.ts"]
 }
