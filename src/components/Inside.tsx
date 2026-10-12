@@ -2,8 +2,8 @@ import { CONTACT_EMAIL } from "../links";
 import type { Release } from "../useLatestRelease";
 import { ArrowUpRight, Mail } from "./Icons";
 
-const APPS = [
-  { name: "Agenda", icon: "/apps/agenda.png" },
+const APPS: { name: string; icon: string; href?: string }[] = [
+  { name: "Agenda", icon: "/apps/agenda.png", href: "/agenda" },
   { name: "Memoria", icon: "/apps/memoria.png" },
   { name: "Dictation", icon: "/apps/dictation.png" },
 ];
@@ -13,14 +13,27 @@ export function Inside({ release }: { release: Release | null }) {
     <footer className="inside">
       <div className="inside-center">
         <ul className="inside-apps reveal" style={{ "--i": 4 } as React.CSSProperties} aria-label="Inside Mundus">
-          {APPS.map(({ name, icon }) => (
-            <li key={name} className="app" tabIndex={0}>
-              <img className="app-icon" src={icon} alt="" width={28} height={28} />
-              <span className="app-name">
-                <span>{name}</span>
-              </span>
-            </li>
-          ))}
+          {APPS.map(({ name, icon, href }) => {
+            const body = (
+              <>
+                <img className="app-icon" src={icon} alt="" width={28} height={28} />
+                <span className="app-name">
+                  <span>{name}</span>
+                </span>
+              </>
+            );
+            return href ? (
+              <li key={name}>
+                <a className="app" href={href}>
+                  {body}
+                </a>
+              </li>
+            ) : (
+              <li key={name} className="app" tabIndex={0}>
+                {body}
+              </li>
+            );
+          })}
         </ul>
         {release && (
           <a className="glass-pill whats-new" href={release.url}>

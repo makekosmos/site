@@ -1,0 +1,155 @@
+{
+  "checked": "2026-10-12",
+  "sources": {
+    "windows": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
+    "macos": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
+    "android": { "repo": "makekosmos/agenda-android", "ref": "v0.1.12" }
+  },
+  "groups": [
+    {
+      "name": "Lists",
+      "features": [
+        { "name": "Inbox", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "This week and next week", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Someday", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Logbook of completed tasks", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Trash with restore", "windows": "yes", "macos": "yes", "android": "yes" },
+        {
+          "name": "Empty trash for good",
+          "windows": "no",
+          "macos": "no",
+          "android": "yes",
+          "note": "Deletes on every synced device"
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "features": [
+        { "name": "Quick entry", "windows": "yes", "macos": "yes", "android": "yes" },
+        {
+          "name": "Natural-language dates",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "note": "«завтра», «через неделю» in the title"
+        },
+        { "name": "Notes on a task", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Deadlines", "windows": "yes", "macos": "yes", "android": "yes" },
+        {
+          "name": "Repeating tasks",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "no",
+          "note": "On a schedule or after completion"
+        },
+        { "name": "Cancelled tasks", "windows": "yes", "macos": "yes", "android": "yes" }
+      ]
+    },
+    {
+      "name": "Projects",
+      "features": [
+        { "name": "Create and rename projects", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Archive projects", "windows": "yes", "macos": "yes", "android": "yes" }
+      ]
+    },
+    {
+      "name": "Finding and arranging",
+      "features": [
+        { "name": "Search", "windows": "yes", "macos": "yes", "android": "yes" },
+        {
+          "name": "Typo-tolerant search",
+          "windows": "no",
+          "macos": "no",
+          "android": "yes",
+          "note": "Forgives one typo and ё/е"
+        },
+        {
+          "name": "Sort by date, priority or title",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes"
+        },
+        { "name": "Group by project or date", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Display options per list", "windows": "yes", "macos": "yes", "android": "yes" }
+      ]
+    },
+    {
+      "name": "Activity",
+      "features": [
+        {
+          "name": "Statistics and streaks",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "note": "7 and 30 days, current and best streak"
+        },
+        { "name": "Share an activity card", "windows": "yes", "macos": "yes", "android": "yes" }
+      ]
+    },
+    {
+      "name": "Sync and data",
+      "features": [
+        {
+          "name": "Sync between devices",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "note": "Desktop syncs through Mundus Manager"
+        },
+        {
+          "name": "Pair a device by code",
+          "windows": "partial",
+          "macos": "partial",
+          "android": "yes",
+          "note": "Desktop pairs in Mundus Manager, not in Agenda"
+        },
+        {
+          "name": "Background sync on a schedule",
+          "windows": "partial",
+          "macos": "partial",
+          "android": "yes",
+          "note": "Desktop: Mundus Engine runs sync"
+        },
+        {
+          "name": "Local-only data",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "note": "No cloud account"
+        }
+      ]
+    },
+    {
+      "name": "App",
+      "features": [
+        {
+          "name": "Light, dark and Rosé Pine themes",
+          "windows": "partial",
+          "macos": "partial",
+          "android": "yes",
+          "note": "Desktop follows the unified Mundus style"
+        },
+        {
+          "name": "Keyboard shortcuts",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "no"
+        },
+        {
+          "name": "Energy saver and VSync",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "no"
+        },
+        {
+          "name": "Self-update",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "note": "Desktop updates with Mundus; Android checks GitHub"
+        }
+      ]
+    }
+  ]
+}
