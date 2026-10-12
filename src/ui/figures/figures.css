@@ -1,0 +1,341 @@
+/* ---------- isometric figures ---------- */
+
+.figs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fig {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: radial-gradient(circle at 50% 40%, rgb(255 255 255 / 0.045), transparent 65%), var(--card);
+  overflow: hidden;
+}
+
+.fig-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 24 / 19;
+  overflow: visible;
+}
+
+.fig figcaption {
+  display: grid;
+  gap: 8px;
+  padding: 0 24px 24px;
+}
+
+.fig-num {
+  color: var(--fg-3);
+}
+
+.fig h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.fig p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--fg-2);
+}
+
+.fig-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fig-facts li {
+  padding: 3px 8px;
+  border: 1px solid var(--line-2);
+  border-radius: 99px;
+  color: var(--fg-2);
+}
+
+/* Four-tone shading: top light, left mid, right dark, a hairline edge. */
+.iso polygon {
+  stroke: rgb(0 0 0 / 0.35);
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+}
+
+.iso .f-top {
+  fill: var(--top);
+}
+
+.iso .f-left {
+  fill: var(--left);
+}
+
+.iso .f-right {
+  fill: var(--right);
+}
+
+.t-engine {
+  --top: #dddbd5;
+  --left: #b8b6b0;
+  --right: #8d8b85;
+}
+
+.t-plate {
+  --top: #2a2925;
+  --left: #21201d;
+  --right: #1a1917;
+}
+
+.t-tile {
+  --top: #44433f;
+  --left: #343330;
+  --right: #292826;
+}
+
+.t-record {
+  --top: #c9c7c1;
+  --left: #9a9892;
+  --right: #74726d;
+}
+
+.t-phone {
+  --top: #171715;
+  --left: #343330;
+  --right: #292826;
+}
+
+.iso image {
+  filter: grayscale(1) contrast(1.1);
+}
+
+.socket {
+  fill: #fff;
+  opacity: 0;
+  animation: socket 5.4s var(--ease) infinite;
+}
+
+.dock {
+  animation: dock 5.4s var(--ease) infinite;
+}
+
+@keyframes dock {
+  0%,
+  10% {
+    transform: translateY(-34px);
+    opacity: 0.55;
+  }
+  32%,
+  78% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-34px);
+    opacity: 0.55;
+  }
+}
+
+@keyframes socket {
+  0%,
+  26% {
+    opacity: 0;
+  }
+  34% {
+    opacity: 0.55;
+  }
+  60%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.packet {
+  opacity: 0;
+  animation: packet 4.8s var(--ease) infinite;
+}
+
+@keyframes packet {
+  0% {
+    transform: none;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  22% {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 1;
+  }
+  27%,
+  100% {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 0;
+  }
+}
+
+.lit {
+  fill: #fff;
+  opacity: 0;
+  animation: lit 4.8s ease-out infinite;
+}
+
+@keyframes lit {
+  0%,
+  19% {
+    opacity: 0;
+  }
+  24% {
+    opacity: 0.6;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.glyph {
+  fill: none;
+  stroke: rgb(237 236 234 / 0.8);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.ring {
+  fill: none;
+  stroke: #1a1917;
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ring 1.2s ease-out infinite;
+}
+
+@keyframes ring {
+  from {
+    transform: scale(0.2);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.wire {
+  stroke: var(--fg-2);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 5;
+  stroke-linecap: round;
+  opacity: 0.7;
+  animation: wire 1.4s linear infinite;
+}
+
+@keyframes wire {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+
+.drop {
+  animation: drop 6s var(--ease) infinite;
+}
+
+.drop-late {
+  animation-name: drop-late;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  14%,
+  88% {
+    transform: none;
+    opacity: 1;
+  }
+  96%,
+  100% {
+    transform: none;
+    opacity: 0;
+  }
+}
+
+@keyframes drop-late {
+  0%,
+  48% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  60%,
+  88% {
+    transform: none;
+    opacity: 1;
+  }
+  96%,
+  100% {
+    transform: none;
+    opacity: 0;
+  }
+}
+
+.hop {
+  opacity: 0;
+  animation: hop 6s var(--ease) infinite;
+}
+
+@keyframes hop {
+  0%,
+  16% {
+    transform: none;
+    opacity: 0;
+  }
+  20% {
+    transform: none;
+    opacity: 1;
+  }
+  34% {
+    transform: translate(calc(var(--dx) / 2), calc(var(--dy) / 2 - 16px));
+  }
+  48% {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 1;
+  }
+  52%,
+  100% {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .figs {
+    grid-template-columns: 1fr;
+  }
+
+  .fig-art {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+.section-head-stack {
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.section-head-stack p {
+  max-width: 760px;
+  margin: 0;
+}

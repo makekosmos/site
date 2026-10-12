@@ -1,5 +1,25 @@
 import { useState, type ReactNode } from "react";
+import { localize } from "../i18n";
 import { DATE, useReleases } from "../ui/releases";
+
+const COPY = localize({
+  en: {
+    title: "Changelog",
+    platform: "Platform",
+    loading: "Loading releases…",
+    error: "GitHub did not answer. See the releases on",
+    latest: "Latest",
+    assets: "Downloads and assets",
+  },
+  ru: {
+    title: "Что нового",
+    platform: "Платформа",
+    loading: "Загружаю релизы…",
+    error: "GitHub не ответил. Релизы можно посмотреть на",
+    latest: "Последний",
+    assets: "Загрузки и файлы",
+  },
+});
 
 export const CHANNELS = [
   { id: "desktop", label: "Windows · macOS", repo: "makekosmos/agenda-gpui" },
@@ -67,9 +87,9 @@ export function Changelog() {
       <div className="wrap">
         <div className="section-head">
           <h2 className="h2-lg" id="changelog-title">
-            Changelog
+            {COPY.title}
           </h2>
-          <div className="segmented" role="tablist" aria-label="Platform">
+          <div className="segmented" role="tablist" aria-label={COPY.platform}>
             {CHANNELS.map((c) => (
               <button key={c.id} type="button" role="tab" aria-selected={c.id === channel.id} onClick={() => setChannel(c)}>
                 {c.label}
@@ -77,10 +97,10 @@ export function Changelog() {
             ))}
           </div>
         </div>
-        {state.status === "loading" && <p className="muted">Loading releases…</p>}
+        {state.status === "loading" && <p className="muted">{COPY.loading}</p>}
         {state.status === "error" && (
           <p className="muted">
-            GitHub did not answer. See the releases on{" "}
+            {COPY.error}{" "}
             <a href={`https://github.com/${channel.repo}/releases`}>GitHub</a>.
           </p>
         )}
@@ -91,13 +111,13 @@ export function Changelog() {
                 <details className="release" open={index === 0}>
                   <summary>
                     <span className="release-tag">{release.tag}</span>
-                    {index === 0 && <span className="badge">Latest</span>}
+                    {index === 0 && <span className="badge">{COPY.latest}</span>}
                     <time dateTime={release.date}>{DATE.format(new Date(release.date))}</time>
                     <span className="release-chevron" aria-hidden="true" />
                   </summary>
                   <Notes body={release.body} />
                   <a className="release-link" href={release.url}>
-                    Downloads and assets
+                    {COPY.assets}
                   </a>
                 </details>
               </li>

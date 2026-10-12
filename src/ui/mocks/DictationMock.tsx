@@ -1,9 +1,32 @@
 import { useEffect, useRef, useState } from "react";
+import { localize } from "../../i18n";
 import { Window } from "../kit";
 
-const SPOKEN =
-  "Hi Anna, Saturday works for me. Let's meet at the café on Rua das Flores at ten, and I will bring the keys for the flat.";
-const WORDS = SPOKEN.split(" ");
+const COPY = localize({
+  en: {
+    spoken:
+      "Hi Anna, Saturday works for me. Let's meet at the café on Rua das Flores at ten, and I will bring the keys for the flat.",
+    window: "New message",
+    to: "To",
+    name: "Anna Petrova",
+    subject: "Subject",
+    topic: "Saturday",
+    replay: "Replay dictation",
+    phase: { idle: "Ready", listening: "Listening", done: "Inserted" },
+  },
+  ru: {
+    spoken: "Привет, Аня! В субботу мне удобно. Давай встретимся в кафе на Rua das Flores в десять, я привезу ключи от квартиры.",
+    window: "Новое письмо",
+    to: "Кому",
+    name: "Анна Петрова",
+    subject: "Тема",
+    topic: "Суббота",
+    replay: "Повторить диктовку",
+    phase: { idle: "Готово к записи", listening: "Слушаю", done: "Вставлено" },
+  },
+});
+
+const WORDS = COPY.spoken.split(" ");
 
 type Phase = "idle" | "listening" | "done";
 
@@ -45,13 +68,13 @@ export function DictationMock() {
 
   return (
     <div className="dictation" ref={root}>
-      <Window title="New message">
+      <Window title={COPY.window}>
         <div className="pane mail">
           <p className="mail-field">
-            <span className="faint">To</span> Anna Petrova
+            <span className="faint">{COPY.to}</span> {COPY.name}
           </p>
           <p className="mail-field">
-            <span className="faint">Subject</span> Saturday
+            <span className="faint">{COPY.subject}</span> {COPY.topic}
           </p>
           <p className="mail-text" aria-live="off">
             {WORDS.slice(0, count).join(" ")}
@@ -59,14 +82,14 @@ export function DictationMock() {
           </p>
         </div>
       </Window>
-      <button type="button" className={`pill pill-${phase}`} onClick={restart} aria-label="Replay dictation">
+      <button type="button" className={`pill pill-${phase}`} onClick={restart} aria-label={COPY.replay}>
         <span className="pill-dot" />
         <span className="wave" aria-hidden="true">
           {Array.from({ length: 14 }, (_, i) => (
             <i key={i} style={{ animationDelay: `${(i * 97) % 600}ms` }} />
           ))}
         </span>
-        <span className="pill-label">{phase === "done" ? "Inserted" : phase === "listening" ? "Listening" : "Ready"}</span>
+        <span className="pill-label">{COPY.phase[phase]}</span>
         <kbd>⌥ Space</kbd>
       </button>
     </div>

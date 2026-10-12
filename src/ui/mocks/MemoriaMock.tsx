@@ -1,21 +1,54 @@
 import { useRef, useState, type PointerEvent } from "react";
 import { Calendar, Doc } from "../../components/Icons";
+import { localize } from "../../i18n";
 import { Window } from "../kit";
 import { Check } from "./Check";
 
-const FILES = ["Lisbon trip", "Packing list", "Reading 2026", "Studio North / brief"];
+const COPY = localize({
+  en: {
+    diary: "Today's diary",
+    vault: "Vault",
+    notes: "Notes",
+    mode: "Editor mode",
+    preview: "Preview",
+    files: ["Lisbon trip", "Packing list", "Reading 2026", "Studio North / brief"],
+    flights: ["Flights on ", "May 14", ", back on the 20th. Stay near ", ", walk everywhere."],
+    sort: "To sort out",
+    todo: ["Book the flat", "Ask Anna about the tram pass", "Print the "],
+    quote: "Eat pastéis at Manteigaria, not Belém.",
+    sticker: "Buy a SIM card at the airport",
+    drag: "Drag me",
+  },
+  ru: {
+    diary: "Дневник за сегодня",
+    vault: "Хранилище",
+    notes: "Заметки",
+    mode: "Режим редактора",
+    preview: "Превью",
+    files: ["Поездка в Лиссабон", "Список вещей", "Чтение 2026", "Studio North / бриф"],
+    flights: ["Вылет ", "14 мая", ", обратно 20-го. Жить рядом с ", ", ходить пешком."],
+    sort: "Разобраться",
+    todo: ["Забронировать квартиру", "Спросить Аню про проездной", "Распечатать "],
+    quote: "Паштейш есть в Manteigaria, а не в Белене.",
+    sticker: "Купить SIM-карту в аэропорту",
+    drag: "Перетащите",
+  },
+});
 
-const SOURCE = `# Lisbon trip
+const [TRIP, PACKING] = COPY.files;
+const [f1, f2, f3, f4] = COPY.flights;
+const [t1, t2, t3] = COPY.todo;
+const SOURCE = `# ${TRIP}
 
-Flights on **May 14**, back on the 20th. Stay near
-[[Alfama]], walk everywhere.
+${f1}**${f2}**${f3}
+[[Alfama]]${f4}
 
-## To sort out
-- [x] Book the flat
-- [ ] Ask Anna about the tram pass
-- [ ] Print the [[Packing list]]
+## ${COPY.sort}
+- [x] ${t1}
+- [ ] ${t2}
+- [ ] ${t3}[[${PACKING}]]
 
-> Eat pastéis at Manteigaria, not Belém.`;
+> ${COPY.quote}`;
 
 export function MemoriaMock() {
   const [mode, setMode] = useState<"preview" | "source">("preview");
@@ -27,13 +60,13 @@ export function MemoriaMock() {
   return (
     <div className="memoria" ref={sticker.bounds}>
       <Window title="Memoria">
-        <nav className="side" aria-label="Notes">
+        <nav className="side" aria-label={COPY.notes}>
           <button type="button" className="side-item">
             <Calendar />
-            Today's diary
+            {COPY.diary}
           </button>
-          <span className="side-label">Vault</span>
-          {FILES.map((file, i) => (
+          <span className="side-label">{COPY.vault}</span>
+          {COPY.files.map((file, i) => (
             <button key={file} type="button" className="side-item" aria-pressed={i === 0}>
               <Doc />
               {file}
@@ -41,10 +74,10 @@ export function MemoriaMock() {
           ))}
         </nav>
         <div className="pane note">
-          <div className="segmented" role="group" aria-label="Editor mode">
+          <div className="segmented" role="group" aria-label={COPY.mode}>
             {(["preview", "source"] as const).map((m) => (
               <button key={m} type="button" aria-pressed={mode === m} onClick={() => setMode(m)}>
-                {m === "preview" ? "Preview" : "Markdown"}
+                {m === "preview" ? COPY.preview : "Markdown"}
               </button>
             ))}
           </div>
@@ -52,18 +85,23 @@ export function MemoriaMock() {
             <pre className="note-source">{SOURCE}</pre>
           ) : (
             <div className="note-body">
-              <h4>Lisbon trip</h4>
+              <h4>{TRIP}</h4>
               <p>
-                Flights on <strong>May 14</strong>, back on the 20th. Stay near <span className="wikilink">Alfama</span>, walk everywhere.
+                {f1}
+                <strong>{f2}</strong>
+                {f3}
+                <span className="wikilink">Alfama</span>
+                {f4}
               </p>
-              <h5>To sort out</h5>
-              {["Book the flat", "Ask Anna about the tram pass", "Print the packing list"].map((item, i) => (
+              <h5>{COPY.sort}</h5>
+              {[t1, t2, t3 + PACKING].map((item, i) => (
                 <div key={item} className={`task${todo[i] ? " is-done" : ""}`}>
                   <Check done={todo[i]} onToggle={() => flip(i)} label={item} />
                   <span className="task-title">
                     {i === 2 ? (
                       <>
-                        Print the <span className="wikilink">Packing list</span>
+                        {t3}
+                        <span className="wikilink">{PACKING}</span>
                       </>
                     ) : (
                       item
@@ -71,7 +109,7 @@ export function MemoriaMock() {
                   </span>
                 </div>
               ))}
-              <blockquote>Eat pastéis at Manteigaria, not Belém.</blockquote>
+              <blockquote>{COPY.quote}</blockquote>
             </div>
           )}
         </div>
@@ -82,8 +120,8 @@ export function MemoriaMock() {
         {...sticker.handlers}
       >
         <span className="sticker-grip" aria-hidden="true" />
-        Buy a SIM card at the airport
-        <small>Drag me</small>
+        {COPY.sticker}
+        <small>{COPY.drag}</small>
       </div>
     </div>
   );
