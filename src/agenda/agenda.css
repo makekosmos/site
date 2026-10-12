@@ -41,8 +41,10 @@
 }
 
 .features .group th {
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-top: 1px solid var(--line);
+  background: rgb(255 255 255 / 0.03);
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.06em;
@@ -50,9 +52,8 @@
   color: var(--fg-2);
 }
 
-.features tbody + tbody .group th {
-  padding-top: 40px;
-  border-top: 1px solid var(--line-2);
+.features thead + tbody .group th {
+  border-top: 0;
 }
 
 .features tbody tr:not(.group) {
