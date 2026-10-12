@@ -1,8 +1,24 @@
 import { useState } from "react";
+import { localize } from "../../i18n";
 import { Window } from "../kit";
 import { Check } from "./Check";
 
-const TASKS = ["Call Anna about the flat", "Review the onboarding draft", "Pay rent", "Pick up the bike"];
+const COPY = localize({
+  en: {
+    tasks: ["Call Anna about the flat", "Review the onboarding draft", "Pay rent", "Pick up the bike"],
+    today: "Today",
+    link: "Wi-Fi · direct",
+    phone: "Agenda on Android",
+  },
+  ru: {
+    tasks: ["Позвонить Ане насчёт квартиры", "Посмотреть черновик онбординга", "Оплатить аренду", "Забрать велосипед"],
+    today: "Сегодня",
+    link: "Wi-Fi · напрямую",
+    phone: "Agenda на Android",
+  },
+});
+
+const TASKS = COPY.tasks;
 
 export function SyncMock() {
   const [done, setDone] = useState([false, true, false, false]);
@@ -26,22 +42,22 @@ export function SyncMock() {
       <div className="sync-desktop">
         <Window title="Agenda · MacBook">
           <div className="pane">
-            <p className="pane-title">Today</p>
+            <p className="pane-title">{COPY.today}</p>
             {list(false)}
           </div>
         </Window>
       </div>
       <div className="sync-link" aria-hidden="true">
         <span key={pulse} className="sync-beam" />
-        <span className="sync-label mono">Wi-Fi · direct</span>
+        <span className="sync-label mono">{COPY.link}</span>
       </div>
-      <div className="phone" aria-label="Agenda on Android">
+      <div className="phone" aria-label={COPY.phone}>
         <div className="phone-screen">
           <p className="phone-status mono">
             <span>9:41</span>
             <span>●●●</span>
           </p>
-          <p className="pane-title">Today</p>
+          <p className="pane-title">{COPY.today}</p>
           {list(true)}
         </div>
       </div>

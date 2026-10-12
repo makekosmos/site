@@ -19,7 +19,7 @@ Check the latest published release of each repo (`gh api repos/makekosmos/<repo>
 
 1. Check out the latest release tag of both app repos.
 2. For every feature, confirm its status from the code: UI strings (often Russian), screens, commands, settings. Read the matching code before you change a status. Do not judge by file names.
-3. Read the release notes since the tags in `sources`. Add a feature only when a user can see or use it. Put it in the matching group with a short sentence-case English name.
+3. Read the release notes since the tags in `sources`. Add a feature only when a user can see or use it. Put it in the matching group with a short sentence-case English name, and its Russian name (and note, if any) under `ru`.
 4. Remove a feature only when its code is gone on every platform.
 5. Set `checked` to today's date and `sources` to the new tags.
 

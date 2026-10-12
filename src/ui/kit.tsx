@@ -1,18 +1,43 @@
 import { createContext, useContext, type ReactNode } from "react";
 import { ArrowRight } from "../components/Icons";
+import { localize } from "../i18n";
 import { CONTACT_EMAIL, DOWNLOAD_URL, RELEASES_URL, REPO_URL } from "../links";
 
+const COPY = localize({
+  en: {
+    home: "Home",
+    homeLabel: "Mundus home",
+    download: "Download",
+    preview: "app preview",
+    apps: "Apps",
+    android: "Agenda for Android",
+    releases: "Releases",
+    contact: "Contact",
+    tagline: "Local-first. Your data stays on your devices.",
+  },
+  ru: {
+    home: "Главная",
+    homeLabel: "Главная Mundus",
+    download: "Скачать",
+    preview: "превью приложения",
+    apps: "Приложения",
+    android: "Agenda для Android",
+    releases: "Релизы",
+    contact: "Контакты",
+    tagline: "Local-first. Ваши данные остаются на ваших устройствах.",
+  },
+});
+
 const NAV = [
-  { label: "Apps", href: "/#apps" },
+  { label: COPY.home, href: "/" },
   { label: "Agenda", href: "/agenda" },
-  { label: "Changelog", href: "/#changelog" },
 ];
 
 export function Nav({ current }: { current?: string }) {
   return (
     <header className="nav">
       <div className="wrap nav-inner">
-        <a className="brand" href="/" aria-label="Mundus home">
+        <a className="brand" href="/" aria-label={COPY.homeLabel}>
           <img src="/mundus-icon.png" alt="" width={22} height={22} />
           Mundus
         </a>
@@ -28,7 +53,7 @@ export function Nav({ current }: { current?: string }) {
             GitHub
           </a>
           <a className="btn btn-light btn-sm" href={DOWNLOAD_URL}>
-            Download
+            {COPY.download}
           </a>
         </div>
       </div>
@@ -42,7 +67,7 @@ export const Shelled = createContext(false);
 export function Window({ title, children }: { title: string; children: ReactNode }) {
   if (useContext(Shelled)) return <div className="window-body">{children}</div>;
   return (
-    <figure className="window" aria-label={`${title} app preview`}>
+    <figure className="window" aria-label={`${title} ${COPY.preview}`}>
       <div className="window-bar" aria-hidden="true">
         <i />
         <i />
@@ -122,21 +147,21 @@ export function Cta({ title, children }: { title: string; children: ReactNode })
 
 const FOOTER = [
   {
-    title: "Apps",
+    title: COPY.apps,
     links: [
       { label: "Agenda", href: "/agenda" },
-      { label: "Agenda for Android", href: "https://github.com/makekosmos/agenda-android/releases/latest" },
+      { label: COPY.android, href: "https://github.com/makekosmos/agenda-android/releases/latest" },
     ],
   },
   {
     title: "Mundus",
     links: [
-      { label: "Download", href: DOWNLOAD_URL },
-      { label: "Releases", href: RELEASES_URL },
+      { label: COPY.download, href: DOWNLOAD_URL },
+      { label: COPY.releases, href: RELEASES_URL },
       { label: "GitHub", href: REPO_URL },
     ],
   },
-  { title: "Contact", links: [{ label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` }] },
+  { title: COPY.contact, links: [{ label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` }] },
 ];
 
 export function Footer() {
@@ -161,7 +186,7 @@ export function Footer() {
         </div>
         <div className="footer-base">
           <span>© {new Date().getFullYear()} Mundus</span>
-          <span>Local-first. Your data stays on your devices.</span>
+          <span>{COPY.tagline}</span>
         </div>
       </div>
     </footer>

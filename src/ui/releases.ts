@@ -1,3 +1,4 @@
+import { LANG } from "../i18n";
 import { useEffect, useState } from "react";
 
 export type Release = { tag: string; name: string; url: string; date: string; body: string };
@@ -37,4 +38,4 @@ export function useReleases(repo: string, limit = 30) {
   return state;
 }
 
-export const DATE = new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric" });
+export const DATE = new Intl.DateTimeFormat(LANG, { day: "numeric", month: "short", year: "numeric" });

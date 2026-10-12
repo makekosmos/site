@@ -1,5 +1,11 @@
 import { ArrowRight } from "../components/Icons";
+import { localize } from "../i18n";
 import { DATE, useReleases, type Release } from "./releases";
+
+const COPY = localize({
+  en: { title: "Changelog", fallback: "Fixes and improvements", error: "GitHub did not answer.", all: "See all releases" },
+  ru: { title: "Что нового", fallback: "Исправления и улучшения", error: "GitHub не ответил.", all: "Все релизы" },
+});
 
 const SKIP = /^(chore|test|ci|exp|docs|style|refactor)\b/i;
 
@@ -13,7 +19,7 @@ function headline(release: Release) {
     const subject = scoped ? scoped[2] : text;
     return { scope: scoped?.[1], subject: subject.charAt(0).toUpperCase() + subject.slice(1) };
   }
-  return { scope: undefined, subject: "Fixes and improvements" };
+  return { scope: undefined, subject: COPY.fallback };
 }
 
 export function ReleaseStrip({ repo, href }: { repo: string; href: string }) {
@@ -25,7 +31,7 @@ export function ReleaseStrip({ repo, href }: { repo: string; href: string }) {
       <div className="wrap">
         <div className="section-head">
           <h2 className="h2-lg" id="changelog-title">
-            Changelog
+            {COPY.title}
           </h2>
         </div>
         <ol className="cards releases-strip" style={{ "--cols": 4 } as React.CSSProperties}>
@@ -49,9 +55,9 @@ export function ReleaseStrip({ repo, href }: { repo: string; href: string }) {
             );
           })}
         </ol>
-        {state.status === "error" && <p className="muted">GitHub did not answer.</p>}
+        {state.status === "error" && <p className="muted">{COPY.error}</p>}
         <a className="link section-foot" href={href}>
-          See all releases
+          {COPY.all}
           <ArrowRight />
         </a>
       </div>

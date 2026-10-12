@@ -8,146 +8,227 @@
   "groups": [
     {
       "name": "Lists",
+      "ru": "Списки",
       "features": [
-        { "name": "Inbox", "windows": "yes", "macos": "yes", "android": "yes" },
-        { "name": "This week and next week", "windows": "yes", "macos": "yes", "android": "yes" },
-        { "name": "Someday", "windows": "yes", "macos": "yes", "android": "yes" },
-        { "name": "Logbook of completed tasks", "windows": "yes", "macos": "yes", "android": "yes" },
-        { "name": "Trash with restore", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Inbox", "windows": "yes", "macos": "yes", "android": "yes", "ru": { "name": "Входящие" } },
+        {
+          "name": "This week and next week",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Эта и следующая неделя" }
+        },
+        { "name": "Someday", "windows": "yes", "macos": "yes", "android": "yes", "ru": { "name": "Когда-нибудь" } },
+        {
+          "name": "Logbook of completed tasks",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Журнал выполненных задач" }
+        },
+        {
+          "name": "Trash with restore",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Корзина с восстановлением" }
+        },
         {
           "name": "Empty trash for good",
           "windows": "no",
           "macos": "no",
           "android": "yes",
-          "note": "Deletes on every synced device"
+          "note": "Deletes on every synced device",
+          "ru": { "name": "Очистка корзины навсегда", "note": "Удаляет на всех синхронизированных устройствах" }
         }
       ]
     },
     {
       "name": "Tasks",
+      "ru": "Задачи",
       "features": [
-        { "name": "Quick entry", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Quick entry", "windows": "yes", "macos": "yes", "android": "yes", "ru": { "name": "Быстрый ввод" } },
         {
           "name": "Natural-language dates",
           "windows": "yes",
           "macos": "yes",
           "android": "yes",
-          "note": "«завтра», «через неделю» in the title"
+          "note": "«завтра», «через неделю» in the title",
+          "ru": { "name": "Даты обычными словами", "note": "«завтра», «через неделю» прямо в названии" }
         },
-        { "name": "Notes on a task", "windows": "yes", "macos": "yes", "android": "yes" },
-        { "name": "Deadlines", "windows": "yes", "macos": "yes", "android": "yes" },
+        {
+          "name": "Notes on a task",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Заметки к задаче" }
+        },
+        { "name": "Deadlines", "windows": "yes", "macos": "yes", "android": "yes", "ru": { "name": "Дедлайны" } },
         {
           "name": "Repeating tasks",
           "windows": "yes",
           "macos": "yes",
           "android": "no",
-          "note": "On a schedule or after completion"
+          "note": "On a schedule or after completion",
+          "ru": { "name": "Повторяющиеся задачи", "note": "По расписанию или после выполнения" }
         },
-        { "name": "Cancelled tasks", "windows": "yes", "macos": "yes", "android": "yes" }
+        {
+          "name": "Cancelled tasks",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Отменённые задачи" }
+        }
       ]
     },
     {
       "name": "Projects",
+      "ru": "Проекты",
       "features": [
-        { "name": "Create and rename projects", "windows": "yes", "macos": "yes", "android": "yes" },
-        { "name": "Archive projects", "windows": "yes", "macos": "yes", "android": "yes" }
+        {
+          "name": "Create and rename projects",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Создание и переименование проектов" }
+        },
+        {
+          "name": "Archive projects",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Архив проектов" }
+        }
       ]
     },
     {
       "name": "Finding and arranging",
+      "ru": "Поиск и порядок",
       "features": [
-        { "name": "Search", "windows": "yes", "macos": "yes", "android": "yes" },
+        { "name": "Search", "windows": "yes", "macos": "yes", "android": "yes", "ru": { "name": "Поиск" } },
         {
           "name": "Typo-tolerant search",
           "windows": "no",
           "macos": "no",
           "android": "yes",
-          "note": "Forgives one typo and ё/е"
+          "note": "Forgives one typo and ё/е",
+          "ru": { "name": "Поиск с опечатками", "note": "Прощает одну опечатку и ё/е" }
         },
         {
           "name": "Sort by date, priority or title",
           "windows": "yes",
           "macos": "yes",
-          "android": "yes"
+          "android": "yes",
+          "ru": { "name": "Сортировка по дате, приоритету или названию" }
         },
-        { "name": "Group by project or date", "windows": "yes", "macos": "yes", "android": "yes" },
-        { "name": "Display options per list", "windows": "yes", "macos": "yes", "android": "yes" }
+        {
+          "name": "Group by project or date",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Группировка по проекту или дате" }
+        },
+        {
+          "name": "Display options per list",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Настройки вида для каждого списка" }
+        }
       ]
     },
     {
       "name": "Activity",
+      "ru": "Активность",
       "features": [
         {
           "name": "Statistics and streaks",
           "windows": "yes",
           "macos": "yes",
           "android": "yes",
-          "note": "7 and 30 days, current and best streak"
+          "note": "7 and 30 days, current and best streak",
+          "ru": { "name": "Статистика и серии", "note": "7 и 30 дней, текущая и лучшая серия" }
         },
-        { "name": "Share an activity card", "windows": "yes", "macos": "yes", "android": "yes" }
+        {
+          "name": "Share an activity card",
+          "windows": "yes",
+          "macos": "yes",
+          "android": "yes",
+          "ru": { "name": "Карточка активности, чтобы поделиться" }
+        }
       ]
     },
     {
       "name": "Sync and data",
+      "ru": "Синхронизация и данные",
       "features": [
         {
           "name": "Sync between devices",
           "windows": "yes",
           "macos": "yes",
           "android": "yes",
-          "note": "Desktop syncs through Mundus Manager"
+          "note": "Desktop syncs through Mundus Manager",
+          "ru": { "name": "Синхронизация между устройствами", "note": "На компьютере синхронизирует Mundus Manager" }
         },
         {
           "name": "Pair a device by code",
           "windows": "partial",
           "macos": "partial",
           "android": "yes",
-          "note": "Desktop pairs in Mundus Manager, not in Agenda"
+          "note": "Desktop pairs in Mundus Manager, not in Agenda",
+          "ru": { "name": "Подключение устройства по коду", "note": "На компьютере в Mundus Manager, а не в Agenda" }
         },
         {
           "name": "Background sync on a schedule",
           "windows": "partial",
           "macos": "partial",
           "android": "yes",
-          "note": "Desktop: Mundus Engine runs sync"
+          "note": "Desktop: Mundus Engine runs sync",
+          "ru": { "name": "Фоновая синхронизация по расписанию", "note": "На компьютере её запускает движок Mundus" }
         },
         {
           "name": "Local-only data",
           "windows": "yes",
           "macos": "yes",
           "android": "yes",
-          "note": "No cloud account"
+          "note": "No cloud account",
+          "ru": { "name": "Данные только локально", "note": "Без облачного аккаунта" }
         }
       ]
     },
     {
       "name": "App",
+      "ru": "Приложение",
       "features": [
         {
           "name": "Light, dark and Rosé Pine themes",
           "windows": "partial",
           "macos": "partial",
           "android": "yes",
-          "note": "Desktop follows the unified Mundus style"
+          "note": "Desktop follows the unified Mundus style",
+          "ru": { "name": "Светлая, тёмная и Rosé Pine темы", "note": "На компьютере общий стиль Mundus" }
         },
         {
           "name": "Keyboard shortcuts",
           "windows": "yes",
           "macos": "yes",
-          "android": "no"
+          "android": "no",
+          "ru": { "name": "Горячие клавиши" }
         },
         {
           "name": "Energy saver and VSync",
           "windows": "yes",
           "macos": "yes",
-          "android": "no"
+          "android": "no",
+          "ru": { "name": "Энергосбережение и VSync" }
         },
         {
           "name": "Self-update",
           "windows": "yes",
           "macos": "yes",
           "android": "yes",
-          "note": "Desktop updates with Mundus; Android checks GitHub"
+          "note": "Desktop updates with Mundus; Android checks GitHub",
+          "ru": { "name": "Самообновление", "note": "На компьютере обновляется с Mundus, Android проверяет GitHub" }
         }
       ]
     }
