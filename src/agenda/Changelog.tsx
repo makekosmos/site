@@ -100,9 +100,10 @@ export function Changelog() {
   const state = useReleases(channel.repo);
 
   return (
-    <section className="block" id="changelog" aria-labelledby="changelog-title">
-      <div className="block-head">
-        <h2 id="changelog-title">Changelog</h2>
+    <section className="wrap block" id="changelog" aria-labelledby="changelog-title">
+      <div className="section-head">
+        <p className="label">03 · Changelog</p>
+        <h2 id="changelog-title">Every release, straight from GitHub.</h2>
         <div className="tabs" role="tablist" aria-label="Platform">
           {CHANNELS.map((c) => (
             <button
