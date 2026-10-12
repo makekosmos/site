@@ -41,10 +41,18 @@
 }
 
 .features .group th {
-  padding-top: 28px;
-  padding-bottom: 8px;
-  font-size: 13px;
-  color: var(--fg-3);
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.features tbody + tbody .group th {
+  padding-top: 40px;
+  border-top: 1px solid var(--line-2);
 }
 
 .features tbody tr:not(.group) {
@@ -120,6 +128,12 @@
   border-radius: var(--r);
   background: var(--card);
   transition: background-color 0.2s ease;
+}
+
+.release-skeleton {
+  height: 60px;
+  background: linear-gradient(90deg, var(--card) 30%, var(--card-hover) 50%, var(--card) 70%) 0 0 / 300% 100%;
+  animation: shimmer 1.4s linear infinite;
 }
 
 .release:not([open]):hover {

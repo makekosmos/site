@@ -1,5 +1,7 @@
-import { Download, Phone } from "../components/Icons";
+import { AppleLogo, ArrowRight, Download, WindowsLogo } from "../components/Icons";
 import { LANG, localize } from "../i18n";
+import { DOWNLOAD_URL } from "../links";
+import { detectPlatform } from "../platform";
 import { Cta, Footer, Nav, Row, Stage } from "../ui/kit";
 import { DATE } from "../ui/releases";
 import { AgendaMock } from "../ui/mocks/AgendaMock";
@@ -8,8 +10,6 @@ import { SyncMock } from "../ui/mocks/SyncMock";
 import { Changelog } from "./Changelog";
 import data from "./features.json";
 
-const DESKTOP_URL = "https://github.com/makekosmos/cortex/releases/latest";
-const ANDROID_URL = "https://github.com/makekosmos/agenda-android/releases/latest";
 
 const PLATFORMS = [
   { id: "windows", label: "Windows" },
@@ -27,7 +27,8 @@ const COPY = localize({
   en: {
     title: "Stop carrying your day in your head.",
     lead: " Agenda holds it. You do the work.",
-    desktop: "Get it for desktop",
+    download: { mac: "Download for macOS", windows: "Download for Windows", any: "Download Agenda" },
+    changelog: "Changelog",
     how: "How Agenda works",
     rows: [
       {
@@ -52,7 +53,8 @@ const COPY = localize({
   ru: {
     title: "Хватит держать день в голове.",
     lead: " Agenda помнит за вас. Вы делаете дело.",
-    desktop: "Скачать для компьютера",
+    download: { mac: "Скачать для macOS", windows: "Скачать для Windows", any: "Скачать Agenda" },
+    changelog: "Что нового",
     how: "Как работает Agenda",
     rows: [
       {
@@ -81,18 +83,15 @@ const total = groups.reduce((n, g) => n + g.features.length, 0);
 const count = (id: (typeof PLATFORMS)[number]["id"]) =>
   groups.reduce((n, g) => n + g.features.filter((f) => f[id] === "yes").length, 0);
 
+const PLATFORM = detectPlatform();
+const PlatformIcon = PLATFORM === "mac" ? AppleLogo : PLATFORM === "windows" ? WindowsLogo : Download;
+
 function Get() {
   return (
-    <>
-      <a className="btn btn-light" href={DESKTOP_URL}>
-        {COPY.desktop}
-        <Download />
-      </a>
-      <a className="btn btn-dark" href={ANDROID_URL}>
-        Android APK
-        <Phone />
-      </a>
-    </>
+    <a className="btn btn-light" href={DOWNLOAD_URL}>
+      {COPY.download[PLATFORM ?? "any"]}
+      <PlatformIcon />
+    </a>
   );
 }
 
@@ -108,6 +107,10 @@ export function AgendaPage() {
           </h1>
           <div className="actions">
             <Get />
+            <a className="btn btn-dark" href="#changelog">
+              {COPY.changelog}
+              <ArrowRight />
+            </a>
           </div>
           <Stage art="fuji" className="hero-stage">
             <AgendaMock />
