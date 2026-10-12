@@ -48,7 +48,7 @@ const COPY = localize({
     cta: "Clear your head. Start today.",
     shots: {
       week: "Agenda on macOS: the week view with tasks for each day",
-      quick: "Agenda on Android: typing a new task",
+      quick: "Agenda on macOS: typing a new task in quick entry",
       phone: "Agenda on Android: the week view",
       stats: "Agenda statistics: completed tasks, streaks and activity",
     },
@@ -80,7 +80,7 @@ const COPY = localize({
     cta: "Освободите голову. Начните сегодня.",
     shots: {
       week: "Agenda на macOS: неделя с задачами по дням",
-      quick: "Agenda на Android: ввод новой задачи",
+      quick: "Agenda на macOS: быстрый ввод новой задачи",
       phone: "Agenda на Android: неделя",
       stats: "Статистика Agenda: выполненные задачи, серии и активность",
     },
@@ -95,17 +95,26 @@ const count = (id: (typeof PLATFORMS)[number]["id"]) =>
 const PLATFORM = detectPlatform();
 const PlatformIcon = PLATFORM === "mac" ? AppleLogo : PLATFORM === "windows" ? WindowsLogo : Download;
 
-function Shot({ src, alt, width, height, phone }: { src: string; alt: string; width: number; height: number; phone?: boolean }) {
-  return (
+type Img = { src: string; width: number; height: number };
+
+function Shot({ alt, phone, eager, narrow, ...img }: Img & { alt: string; phone?: boolean; eager?: boolean; narrow?: Img }) {
+  const shot = (
     <img
       className={`window shot${phone ? " shot-phone" : ""}`}
-      src={`/agenda/${src}.webp`}
+      src={`/agenda/${img.src}.webp`}
       alt={alt}
-      width={width}
-      height={height}
-      loading="lazy"
+      width={img.width}
+      height={img.height}
+      loading={eager ? "eager" : "lazy"}
       decoding="async"
     />
+  );
+  if (!narrow) return shot;
+  return (
+    <picture className="shot-picture">
+      <source media="(max-width: 640px)" srcSet={`/agenda/${narrow.src}.webp`} width={narrow.width} height={narrow.height} />
+      {shot}
+    </picture>
   );
 }
 
@@ -136,7 +145,14 @@ export function AgendaPage() {
             </a>
           </div>
           <Stage art="fuji" className="hero-stage">
-            <Shot src="week" alt={COPY.shots.week} width={1600} height={963} />
+            <Shot
+              src="week"
+              alt={COPY.shots.week}
+              width={1600}
+              height={963}
+              eager
+              narrow={{ src: "week-list", width: 720, height: 615 }}
+            />
           </Stage>
         </section>
 
@@ -147,7 +163,13 @@ export function AgendaPage() {
               title={COPY.rows[0].title}
               body={COPY.rows[0].body}
             >
-              <Shot src="quick-phone" alt={COPY.shots.quick} width={540} height={1171} phone />
+              <Shot
+                src="quick"
+                alt={COPY.shots.quick}
+                width={1600}
+                height={963}
+                narrow={{ src: "quick-panel", width: 680, height: 560 }}
+              />
             </Row>
             <Row
               art="sierra"

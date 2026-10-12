@@ -610,9 +610,26 @@ a.card:hover {
   height: auto;
 }
 
+.shot-picture {
+  display: contents;
+}
+
+/* The render has no status bar, so the frame adds one to keep the top corners off the title. */
 .shot-phone {
   width: min(100%, 270px);
+  padding-top: 14px;
   border-radius: 28px;
+}
+
+@media (max-width: 640px) {
+  .hero-stage {
+    padding-bottom: 52px;
+  }
+
+  .shot-phone {
+    width: min(100%, 210px);
+    border-radius: 22px;
+  }
 }
 
 /* ---------- release strip ---------- */
