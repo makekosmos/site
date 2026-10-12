@@ -148,3 +148,55 @@ export function Branch(props: IconProps) {
     </Stroke>
   );
 }
+
+export function Inbox(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} {...props}>
+      <path d="M22 12h-6l-2 3h-4l-2-3H2" />
+      <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+    </Stroke>
+  );
+}
+
+export function Calendar(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} {...props}>
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
+    </Stroke>
+  );
+}
+
+export function Archive(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} {...props}>
+      <rect x="2" y="3" width="20" height="5" rx="1" />
+      <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8M10 12h4" />
+    </Stroke>
+  );
+}
+
+export function Moon(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} {...props}>
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z" />
+    </Stroke>
+  );
+}
+
+export function Doc(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} {...props}>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <path d="M14 2v6h6M8 13h8M8 17h5" />
+    </Stroke>
+  );
+}
+
+export function Download(props: IconProps) {
+  return (
+    <Stroke width={15} height={15} {...props}>
+      <path d="M12 4v12M6 11l6 6 6-6M5 21h14" />
+    </Stroke>
+  );
+}

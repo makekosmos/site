@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./ui/fonts";
 import "./ui/ui.css";
-import "./styles.css";
+import "./ui/mocks/mocks.css";
 import App from "./App";
 
 createRoot(document.getElementById("app")!).render(

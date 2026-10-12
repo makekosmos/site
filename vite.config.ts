@@ -4,9 +4,6 @@ import { resolve } from "node:path";
 
 export default defineConfig({
   plugins: [react()],
-  optimizeDeps: {
-    include: ["shaders/react"],
-  },
   server: {
     port: 5180,
     hmr: {

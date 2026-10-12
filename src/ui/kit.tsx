@@ -1,23 +1,20 @@
-import type { ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import { ArrowRight } from "../components/Icons";
-import { Logo } from "../components/Logo";
 import { CONTACT_EMAIL, DOWNLOAD_URL, RELEASES_URL, REPO_URL } from "../links";
-import { Halftone } from "./Halftone";
 
 const NAV = [
   { label: "Apps", href: "/#apps" },
   { label: "Agenda", href: "/agenda" },
-  { label: "Releases", href: RELEASES_URL },
-  { label: "GitHub", href: REPO_URL },
+  { label: "Changelog", href: "/#changelog" },
 ];
 
 export function Nav({ current }: { current?: string }) {
   return (
-    <div className="nav-shell">
-      <header className="nav">
+    <header className="nav">
+      <div className="wrap nav-inner">
         <a className="brand" href="/" aria-label="Mundus home">
-          <Logo />
-          <span>Mundus</span>
+          <img src="/mundus-icon.png" alt="" width={22} height={22} />
+          Mundus
         </a>
         <nav className="nav-links" aria-label="Site">
           {NAV.map((link) => (
@@ -26,38 +23,26 @@ export function Nav({ current }: { current?: string }) {
             </a>
           ))}
         </nav>
-        <a className="btn btn-primary btn-sm" href={DOWNLOAD_URL}>
-          Download
-          <ArrowRight />
-        </a>
-      </header>
-    </div>
+        <div className="nav-end">
+          <a className="btn btn-outline btn-sm" href={REPO_URL}>
+            GitHub
+          </a>
+          <a className="btn btn-light btn-sm" href={DOWNLOAD_URL}>
+            Download
+          </a>
+        </div>
+      </div>
+    </header>
   );
 }
 
-export function SectionHead({
-  eyebrow,
-  title,
-  children,
-  center,
-}: {
-  eyebrow: string;
-  title: ReactNode;
-  children?: ReactNode;
-  center?: boolean;
-}) {
-  return (
-    <div className={`section-head${center ? " center" : ""}`}>
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="heading">{title}</h2>
-      {children}
-    </div>
-  );
-}
+// Inside the Mundus shell an app has no chrome of its own, only its body.
+export const Shelled = createContext(false);
 
 export function Window({ title, children }: { title: string; children: ReactNode }) {
+  if (useContext(Shelled)) return <div className="window-body">{children}</div>;
   return (
-    <figure className="window" style={{ margin: 0 }} aria-label={title}>
+    <figure className="window" aria-label={`${title} app preview`}>
       <div className="window-bar" aria-hidden="true">
         <i />
         <i />
@@ -69,32 +54,68 @@ export function Window({ title, children }: { title: string; children: ReactNode
   );
 }
 
-export function CtaPanel({
-  eyebrow,
+// Public-domain paintings, via Wikimedia Commons.
+const ART = {
+  haystacks: { artist: "Claude Monet", title: "Haystacks, end of Summer", year: "1891" },
+  heron: { artist: "George Inness", title: "The Home of the Heron", year: "1893" },
+  lilies: { artist: "Claude Monet", title: "Water Lilies", year: "1916–19" },
+  dnieper: { artist: "Arkhip Kuindzhi", title: "Moonlit Night on the Dnieper", year: "1880" },
+  sierra: { artist: "Albert Bierstadt", title: "Among the Sierra Nevada, California", year: "1868" },
+  fuji: { artist: "Katsushika Hokusai", title: "Fine Wind, Clear Morning", year: "c. 1831" },
+  etretat: { artist: "Claude Monet", title: "The Beach at Étretat", year: "1885" },
+  pines: { artist: "Ivan Shishkin", title: "Morning in a Pine Forest", year: "1889" },
+} as const;
+
+export type Art = keyof typeof ART;
+
+export function Stage({ art, children, className = "" }: { art: Art; children: ReactNode; className?: string }) {
+  const { artist, title, year } = ART[art];
+  return (
+    <div className={`stage ${className}`}>
+      <img className="stage-art" src={`/art/${art}.webp`} alt="" loading="lazy" decoding="async" />
+      {children}
+      <small className="stage-credit">
+        {artist}, <i>{title}</i>, {year}
+      </small>
+    </div>
+  );
+}
+
+export function Row({
   title,
+  body,
+  link,
+  art,
   children,
-  actions,
 }: {
-  eyebrow: string;
-  title: ReactNode;
-  children?: ReactNode;
-  actions: ReactNode;
+  title: string;
+  body: string;
+  link?: { label: string; href: string };
+  art: Art;
+  children: ReactNode;
 }) {
   return (
-    <section className="section">
-      <div className="wrap">
-        <div className="card cta-panel">
-          <div className="cta-copy">
-            <p className="eyebrow">{eyebrow}</p>
-            <h2 className="heading">{title}</h2>
-            {children}
-            <div className="actions">{actions}</div>
-          </div>
-          <div className="cta-art" aria-hidden="true">
-            <Halftone />
-          </div>
-        </div>
+    <article className="row rise">
+      <div className="row-copy">
+        <h3 className="h2">{title}</h3>
+        <p className="h2 muted">{body}</p>
+        {link && (
+          <a className="link" href={link.href}>
+            {link.label}
+            <ArrowRight />
+          </a>
+        )}
       </div>
+      <Stage art={art}>{children}</Stage>
+    </article>
+  );
+}
+
+export function Cta({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="wrap cta">
+      <h2 className="h2-lg">{title}</h2>
+      <div className="actions">{children}</div>
     </section>
   );
 }
@@ -122,28 +143,26 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="wrap">
-        <div className="footer-top">
+        <div className="footer-grid">
           <a className="brand" href="/">
-            <Logo />
-            <span>Mundus</span>
+            <img src="/mundus-icon.png" alt="" width={22} height={22} />
+            Mundus
           </a>
-          <div className="footer-cols">
-            {FOOTER.map((col) => (
-              <div key={col.title} className="footer-col">
-                <p className="eyebrow">{col.title}</p>
-                {col.links.map((link) => (
-                  <a key={link.label} href={link.href}>
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            ))}
-          </div>
+          {FOOTER.map((col) => (
+            <div key={col.title} className="footer-col">
+              <p>{col.title}</p>
+              {col.links.map((link) => (
+                <a key={link.label} href={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ))}
         </div>
-        <p className="footer-word" aria-hidden="true">
-          Mundus
-        </p>
-        <p className="footer-note">Local-first. Your data stays on your devices.</p>
+        <div className="footer-base">
+          <span>© {new Date().getFullYear()} Mundus</span>
+          <span>Local-first. Your data stays on your devices.</span>
+        </div>
       </div>
     </footer>
   );
