@@ -4,11 +4,9 @@ import { DOWNLOAD_URL } from "../links";
 import { detectPlatform } from "../platform";
 import { Cta, Footer, Nav, Row, Stage } from "../ui/kit";
 import { DATE } from "../ui/releases";
-import { AgendaMock } from "../ui/mocks/AgendaMock";
-import { StatsMock } from "../ui/mocks/StatsMock";
-import { SyncMock } from "../ui/mocks/SyncMock";
 import { Changelog } from "./Changelog";
 import data from "./features.json";
+import { Shot } from "../ui/Shot";
 
 
 const PLATFORMS = [
@@ -49,6 +47,12 @@ const COPY = localize({
     feature: "Feature",
     status: { yes: "Available", partial: "Partly, see note", no: "Not yet" } as Record<Status, string>,
     cta: "Clear your head. Start today.",
+    shots: {
+      week: "Agenda on macOS: the week view with tasks for each day",
+      quick: "Agenda on macOS: typing a new task in quick entry",
+      phone: "Agenda on Android: the week view",
+      stats: "Agenda statistics: completed tasks, streaks and activity",
+    },
   },
   ru: {
     title: "Хватит держать день в голове.",
@@ -75,6 +79,12 @@ const COPY = localize({
     feature: "Функция",
     status: { yes: "Есть", partial: "Частично, см. примечание", no: "Пока нет" } as Record<Status, string>,
     cta: "Освободите голову. Начните сегодня.",
+    shots: {
+      week: "Agenda на macOS: неделя с задачами по дням",
+      quick: "Agenda на macOS: быстрый ввод новой задачи",
+      phone: "Agenda на Android: неделя",
+      stats: "Статистика Agenda: выполненные задачи, серии и активность",
+    },
   },
 });
 const STATUS = COPY.status;
@@ -113,7 +123,14 @@ export function AgendaPage() {
             </a>
           </div>
           <Stage art="fuji" className="hero-stage">
-            <AgendaMock />
+            <Shot
+              src="week"
+              alt={COPY.shots.week}
+              width={1600}
+              height={963}
+              eager
+              narrow={{ src: "week-list", width: 720, height: 615 }}
+            />
           </Stage>
         </section>
 
@@ -124,21 +141,27 @@ export function AgendaPage() {
               title={COPY.rows[0].title}
               body={COPY.rows[0].body}
             >
-              <AgendaMock initial="inbox" />
+              <Shot
+                src="quick"
+                alt={COPY.shots.quick}
+                width={1600}
+                height={963}
+                narrow={{ src: "quick-panel", width: 680, height: 560 }}
+              />
             </Row>
             <Row
               art="sierra"
               title={COPY.rows[1].title}
               body={COPY.rows[1].body}
             >
-              <SyncMock />
+              <Shot src="week-phone" alt={COPY.shots.phone} width={540} height={1200} phone />
             </Row>
             <Row
               art="pines"
               title={COPY.rows[2].title}
               body={COPY.rows[2].body}
             >
-              <StatsMock />
+              <Shot src="stats" alt={COPY.shots.stats} width={1600} height={663} />
             </Row>
           </div>
         </section>

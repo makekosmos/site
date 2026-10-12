@@ -360,38 +360,6 @@ p {
   text-align: left;
 }
 
-.window-bar {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  height: 34px;
-  padding: 0 13px;
-  border-bottom: 1px solid var(--win-line);
-}
-
-.window-bar i {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: rgb(255 255 255 / 0.12);
-}
-
-.window-bar span {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  color: var(--fg-3);
-  pointer-events: none;
-}
-
-.window-body {
-  display: flex;
-  min-height: 0;
-}
-
 .side {
   display: flex;
   flex: 0 0 196px;
@@ -601,6 +569,34 @@ a.card:hover {
 
 .hero-stage .window {
   max-width: 1040px;
+}
+
+/* ---------- screenshots ---------- */
+
+.shot {
+  display: block;
+  height: auto;
+}
+
+.shot-picture {
+  display: contents;
+}
+
+.shot-phone {
+  display: block;
+  width: min(100%, 290px);
+  height: auto;
+  filter: drop-shadow(0 30px 40px rgb(6 5 20 / 0.5));
+}
+
+@media (max-width: 640px) {
+  .hero-stage {
+    padding-bottom: 52px;
+  }
+
+  .shot-phone {
+    width: min(100%, 220px);
+  }
 }
 
 /* ---------- release strip ---------- */

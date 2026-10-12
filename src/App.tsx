@@ -5,8 +5,8 @@ import { DOWNLOAD_URL, RELEASES_URL } from "./links";
 import { detectPlatform } from "./platform";
 import { ArkFigure, EngineFigure, SystemFigure } from "./ui/figures/Figures";
 import { Cta, Footer, Nav, Stage } from "./ui/kit";
-import { MundusMock } from "./ui/mocks/MundusMock";
 import { ReleaseStrip } from "./ui/ReleaseStrip";
+import { Shot } from "./ui/Shot";
 
 const COPY = localize({
   en: {
@@ -14,6 +14,7 @@ const COPY = localize({
     lead: " Your data stays with you. No account, no cloud.",
     download: { mac: "Download for macOS", windows: "Download for Windows", any: "Download Mundus" },
     how: "How it works",
+    shot: "Agenda running on Mundus: the week view with tasks for each day",
     howTitle: "One engine. Everything else on top.",
     howLead: "It runs in the background. Apps plug in. Your data stays inside.",
     figs: [
@@ -45,6 +46,7 @@ const COPY = localize({
     lead: " Данные остаются у вас. Без аккаунта и облака.",
     download: { mac: "Скачать для macOS", windows: "Скачать для Windows", any: "Скачать Mundus" },
     how: "Как это работает",
+    shot: "Agenda на Mundus: неделя с задачами на каждый день",
     howTitle: "Один движок. Всё остальное сверху.",
     howLead: "Он работает в фоне. Приложения подключаются. Данные остаются внутри.",
     figs: [
@@ -103,7 +105,7 @@ export default function App() {
             </a>
           </div>
           <Stage art="haystacks" className="hero-stage">
-            <MundusMock />
+            <Shot src="week" alt={COPY.shot} width={1600} height={963} eager narrow={{ src: "week-list", width: 720, height: 615 }} />
           </Stage>
         </section>
 
