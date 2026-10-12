@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import { SectionHead } from "../ui/kit";
 
 export const CHANNELS = [
   { id: "desktop", label: "Windows · macOS", repo: "makekosmos/agenda-gpui" },
@@ -100,10 +101,16 @@ export function Changelog() {
   const state = useReleases(channel.repo);
 
   return (
-    <section className="wrap block" id="changelog" aria-labelledby="changelog-title">
-      <div className="section-head">
-        <p className="label">03 · Changelog</p>
-        <h2 id="changelog-title">Every release, straight from GitHub.</h2>
+    <section className="section" id="changelog" aria-labelledby="changelog-title">
+      <div className="wrap">
+      <SectionHead
+        eyebrow="Changelog"
+        title={
+          <span id="changelog-title">
+            Every release, straight from <span className="accent">GitHub</span>.
+          </span>
+        }
+      >
         <div className="tabs" role="tablist" aria-label="Platform">
           {CHANNELS.map((c) => (
             <button
@@ -117,7 +124,7 @@ export function Changelog() {
             </button>
           ))}
         </div>
-      </div>
+      </SectionHead>
       {state.status === "loading" && <p className="muted">Loading releases…</p>}
       {state.status === "error" && (
         <p className="muted">
@@ -144,6 +151,7 @@ export function Changelog() {
           ))}
         </ol>
       )}
+      </div>
     </section>
   );
 }

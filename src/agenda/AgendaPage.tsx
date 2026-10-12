@@ -1,6 +1,12 @@
+import { ArrowRight } from "../components/Icons";
+import { AgendaMock } from "../ui/AgendaMock";
+import { Halftone } from "../ui/Halftone";
+import { CtaPanel, Footer, Nav, SectionHead } from "../ui/kit";
 import { Changelog } from "./Changelog";
 import data from "./features.json";
-import { HalftoneMark } from "./HalftoneMark";
+
+const DESKTOP_URL = "https://github.com/makekosmos/cortex/releases/latest";
+const ANDROID_URL = "https://github.com/makekosmos/agenda-android/releases/latest";
 
 const PLATFORMS = [
   { id: "windows", label: "Windows" },
@@ -41,176 +47,162 @@ const STEPS = [
   },
 ];
 
-const WEEK = [
-  { day: "Monday", tasks: [{ title: "Send the invoice to Studio North", done: true }] },
-  {
-    day: "Tuesday",
-    tasks: [
-      { title: "Call Anna about the flat", done: false, tag: "Home" },
-      { title: "Review the draft", done: false, deadline: "Due Wed" },
-    ],
-  },
-  { day: "Thursday", tasks: [{ title: "Pay rent", done: false, repeat: true }] },
-];
-
-function AppMock() {
-  return (
-    <figure className="mock" aria-label="Agenda showing the This week list">
-      <aside className="mock-side">
-        <span className="mock-item">
-          Inbox <em>3</em>
-        </span>
-        <span className="mock-item active">This week</span>
-        <span className="mock-item">Next week</span>
-        <span className="mock-item">Someday</span>
-        <span className="mock-item">Logbook</span>
-        <span className="mock-label">Projects</span>
-        <span className="mock-item">Home</span>
-        <span className="mock-item">Studio North</span>
-      </aside>
-      <div className="mock-main">
-        <p className="mock-title">This week</p>
-        <p className="mock-entry">New task, e.g. “dentist on friday”</p>
-        {WEEK.map((d) => (
-          <div key={d.day} className="mock-day">
-            <span className="mock-dayname">{d.day}</span>
-            {d.tasks.map((task) => (
-              <span key={task.title} className={`mock-task${task.done ? " done" : ""}`}>
-                <i className="box" />
-                {task.title}
-                {"tag" in task && <small>{task.tag}</small>}
-                {"deadline" in task && <small>{task.deadline}</small>}
-                {"repeat" in task && <small>Every month</small>}
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-    </figure>
-  );
-}
+const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
 export function AgendaPage() {
   return (
-    <div className="agenda">
-      <header className="top wrap">
-        <a className="brand" href="/">
-          Mundus
-        </a>
-        <nav>
-          <a href="#what">What it is</a>
-          <a href="#features">Features</a>
-          <a href="#changelog">Changelog</a>
-          <a className="pill" href="https://github.com/makekosmos/cortex/releases/latest">
-            Download
-          </a>
-        </nav>
-      </header>
-
-      <section className="hero wrap">
-        <p className="label">Task manager · Windows · macOS · Android</p>
-        <h1>Agenda</h1>
-        <div className="hero-foot">
-          <p className="statement">A calm list of what you have to do, on your computer and in your pocket.</p>
-          <div className="actions">
-            <a className="pill solid" href="https://github.com/makekosmos/cortex/releases/latest">
-              Get it for desktop
-            </a>
-            <a className="pill" href="https://github.com/makekosmos/agenda-android/releases/latest">
-              Android APK
-            </a>
+    <>
+      <Nav current="/agenda" />
+      <main>
+        <section className="agenda-hero">
+          <div className="agenda-art" aria-hidden="true">
+            <Halftone mark />
           </div>
-        </div>
-      </section>
-
-      <HalftoneMark />
-
-      <section className="what wrap" id="what" aria-labelledby="what-title">
-        <div className="section-head">
-          <p className="label">01 · What Agenda is</p>
-          <h2 id="what-title">
-            One list for the day, the week and someday. It goes from a thought to done in four moves.
-          </h2>
-        </div>
-        <ol className="steps">
-          {STEPS.map((step, i) => (
-            <li key={step.title}>
-              <span className="num">0{i + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
-            </li>
-          ))}
-        </ol>
-        <AppMock />
-      </section>
-
-      <section className="wrap block" id="features" aria-labelledby="features-title">
-        <div className="section-head">
-          <p className="label">02 · Features</p>
-          <h2 id="features-title">What works where.</h2>
-          <p className="muted">
-            {total} features, checked against the code on {data.checked}.
-          </p>
-        </div>
-        <table className="features">
-          <thead>
-            <tr>
-              <th scope="col">Feature</th>
+          <div className="wrap agenda-copy">
+            <img className="reveal" style={step(0)} src="/apps/agenda.png" alt="" width={56} height={56} />
+            <p className="eyebrow reveal" style={step(1)}>
+              Agenda · Task manager
+            </p>
+            <h1 className="display reveal" style={step(2)}>
+              A calm list for everything you have to <span className="accent">do</span>.
+            </h1>
+            <p className="lede reveal" style={step(3)}>
+              Agenda keeps your day, your week and someday in one place. On your computer and in your pocket, with
+              nothing stored in someone else's cloud.
+            </p>
+            <div className="actions reveal" style={step(4)}>
+              <a className="btn btn-primary" href={DESKTOP_URL}>
+                Get it for desktop
+                <ArrowRight />
+              </a>
+              <a className="btn btn-ghost" href={ANDROID_URL}>
+                Android APK
+              </a>
+            </div>
+            <p className="platform-chips reveal" style={step(5)}>
               {PLATFORMS.map((p) => (
-                <th key={p.id} scope="col" className="platform">
+                <span key={p.id} className="chip">
                   {p.label}
-                  <span className="score">
-                    {count(p.id)}/{total}
-                  </span>
-                </th>
+                </span>
               ))}
-            </tr>
-          </thead>
-          {groups.map((group) => (
-            <tbody key={group.name}>
-              <tr className="group">
-                <th colSpan={PLATFORMS.length + 1} scope="colgroup">
-                  {group.name}
-                </th>
-              </tr>
-              {group.features.map((f) => (
-                <tr key={f.name}>
-                  <th scope="row">
-                    {f.name}
-                    {f.note && <span className="note">{f.note}</span>}
-                  </th>
-                  {PLATFORMS.map((p) => (
-                    <td key={p.id} className={`status ${f[p.id]}`}>
-                      <span aria-hidden="true">{STATUS[f[p.id]].mark}</span>
-                      <span className="sr">{STATUS[f[p.id]].label}</span>
-                    </td>
-                  ))}
-                </tr>
+            </p>
+          </div>
+          <div className="wrap agenda-window reveal" style={step(6)}>
+            <AgendaMock />
+          </div>
+        </section>
+
+        <section className="section" id="how">
+          <div className="wrap">
+            <SectionHead
+              eyebrow="How it works"
+              title={
+                <>
+                  From a thought to <span className="accent">done</span> in four moves.
+                </>
+              }
+            />
+            <ol className="grid steps" style={{ "--cols": 4 } as React.CSSProperties}>
+              {STEPS.map((s, i) => (
+                <li key={s.title} className="card tile">
+                  <span className="step-num">0{i + 1}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.body}</p>
+                </li>
               ))}
-            </tbody>
-          ))}
-        </table>
-        <ul className="legend">
-          {Object.entries(STATUS).map(([key, s]) => (
-            <li key={key} className={`status ${key}`}>
-              <span aria-hidden="true">{s.mark}</span> {s.label}
-            </li>
-          ))}
-        </ul>
-      </section>
+            </ol>
+          </div>
+        </section>
 
-      <Changelog />
+        <section className="section" id="features" aria-labelledby="features-title">
+          <div className="wrap">
+            <SectionHead
+              eyebrow="Features"
+              title={
+                <span id="features-title">
+                  What works <span className="accent">where</span>.
+                </span>
+              }
+            >
+              <p className="muted">
+                {total} features, checked against the code on {data.checked}.
+              </p>
+            </SectionHead>
+            <div className="card table-card">
+              <table className="features">
+                <thead>
+                  <tr>
+                    <th scope="col">Feature</th>
+                    {PLATFORMS.map((p) => (
+                      <th key={p.id} scope="col" className="platform">
+                        {p.label}
+                        <span className="score">
+                          {count(p.id)}/{total}
+                        </span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                {groups.map((group) => (
+                  <tbody key={group.name}>
+                    <tr className="group">
+                      <th colSpan={PLATFORMS.length + 1} scope="colgroup">
+                        {group.name}
+                      </th>
+                    </tr>
+                    {group.features.map((f) => (
+                      <tr key={f.name}>
+                        <th scope="row">
+                          {f.name}
+                          {f.note && <span className="note">{f.note}</span>}
+                        </th>
+                        {PLATFORMS.map((p) => (
+                          <td key={p.id} className={`status ${f[p.id]}`}>
+                            <span aria-hidden="true">{STATUS[f[p.id]].mark}</span>
+                            <span className="sr">{STATUS[f[p.id]].label}</span>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                ))}
+              </table>
+            </div>
+            <ul className="legend">
+              {Object.entries(STATUS).map(([key, s]) => (
+                <li key={key} className={`status ${key}`}>
+                  <span aria-hidden="true">{s.mark}</span> {s.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      <footer className="foot wrap">
-        <p className="foot-word" aria-hidden="true">
-          Agenda
-        </p>
-        <div className="foot-links">
-          <a href="/">Part of Mundus</a>
-          <a href="https://github.com/makekosmos/agenda-gpui">agenda-gpui</a>
-          <a href="https://github.com/makekosmos/agenda-android">agenda-android</a>
-        </div>
-      </footer>
-    </div>
+        <Changelog />
+
+        <CtaPanel
+          eyebrow="Agenda"
+          title={
+            <>
+              Start with today. <span className="accent">Plan</span> the rest later.
+            </>
+          }
+          actions={
+            <>
+              <a className="btn btn-primary" href={DESKTOP_URL}>
+                Get it for desktop
+                <ArrowRight />
+              </a>
+              <a className="btn btn-ghost" href={ANDROID_URL}>
+                Android APK
+              </a>
+            </>
+          }
+        >
+          <p className="muted">Comes with Mundus on Windows and macOS. A separate APK for Android.</p>
+        </CtaPanel>
+      </main>
+      <Footer />
+    </>
   );
 }

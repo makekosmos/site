@@ -101,3 +101,50 @@ export function Mail(props: IconProps) {
     </Stroke>
   );
 }
+
+export function Lock(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} strokeWidth={1.8} {...props}>
+      <rect x="4" y="11" width="16" height="10" rx="2.5" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </Stroke>
+  );
+}
+
+export function Phone(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} strokeWidth={1.8} {...props}>
+      <rect x="6" y="2" width="12" height="20" rx="3" />
+      <path d="M11 18h2" />
+    </Stroke>
+  );
+}
+
+export function Sparkles(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} strokeWidth={1.8} {...props}>
+      <path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z" />
+      <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" />
+    </Stroke>
+  );
+}
+
+export function Monitor(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} strokeWidth={1.8} {...props}>
+      <rect x="2" y="4" width="20" height="13" rx="2.5" />
+      <path d="M8 21h8M12 17v4" />
+    </Stroke>
+  );
+}
+
+export function Branch(props: IconProps) {
+  return (
+    <Stroke width={16} height={16} strokeWidth={1.8} {...props}>
+      <circle cx="6" cy="5" r="2" />
+      <circle cx="6" cy="19" r="2" />
+      <circle cx="18" cy="8" r="2" />
+      <path d="M6 7v10M18 10c0 4-6 3-11.5 7" />
+    </Stroke>
+  );
+}
