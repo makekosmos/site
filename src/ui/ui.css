@@ -603,6 +603,18 @@ a.card:hover {
   max-width: 1040px;
 }
 
+/* ---------- screenshots ---------- */
+
+.shot {
+  display: block;
+  height: auto;
+}
+
+.shot-phone {
+  width: min(100%, 270px);
+  border-radius: 28px;
+}
+
 /* ---------- release strip ---------- */
 
 .release-card {
