@@ -1,6 +1,6 @@
 import { createContext, useContext, type ReactNode } from "react";
 import { ArrowRight } from "../components/Icons";
-import { localize } from "../i18n";
+import { LANG, localize, setLang, type Lang } from "../i18n";
 import { CONTACT_EMAIL, DOWNLOAD_URL, RELEASES_URL, REPO_URL } from "../links";
 
 const COPY = localize({
@@ -164,6 +164,11 @@ const FOOTER = [
   { title: COPY.contact, links: [{ label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` }] },
 ];
 
+const LANGS: [Lang, string][] = [
+  ["en", "English"],
+  ["ru", "Русский"],
+];
+
 export function Footer() {
   return (
     <footer className="footer">
@@ -187,6 +192,13 @@ export function Footer() {
         <div className="footer-base">
           <span>© {new Date().getFullYear()} Mundus</span>
           <span>{COPY.tagline}</span>
+          <div className="segmented" role="group" aria-label="Language">
+            {LANGS.map(([lang, label]) => (
+              <button key={lang} type="button" lang={lang} aria-pressed={lang === LANG} onClick={() => setLang(lang)}>
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
