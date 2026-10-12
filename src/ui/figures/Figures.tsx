@@ -99,15 +99,15 @@ export function ArkFigure({ label }: { label: string }) {
       <g transform="translate(-14 2) scale(1.2)">
         <line className="wire" x1={ax} y1={ay} x2={bx} y2={by} />
         {STACK.map((z) => (
-          <Box key={z} at={[0, 30, z]} size={[50, 50, 5]} tone="amber" />
+          <Box key={z} at={[0, 30, z]} size={[50, 50, 5]} tone="record" />
         ))}
-        <Box at={[0, 30, 28]} size={[50, 50, 5]} tone="amber" className="drop" />
+        <Box at={[0, 30, 28]} size={[50, 50, 5]} tone="record" className="drop" />
         <Box at={[82, 6, 0]} size={[30, 54, 5]} tone="phone" />
         {[5, 9].map((z) => (
-          <Box key={z} at={[87, 23, z]} size={[20, 20, 3]} tone="amber" />
+          <Box key={z} at={[87, 23, z]} size={[20, 20, 3]} tone="record" />
         ))}
-        <Box at={[87, 23, 13]} size={[20, 20, 3]} tone="amber" className="drop drop-late" />
-        <Box at={[22, 52, 34]} size={[6, 6, 6]} tone="amber" className="hop" style={travel([22, 52, 34], [94, 30, 17])} />
+        <Box at={[87, 23, 13]} size={[20, 20, 3]} tone="record" className="drop drop-late" />
+        <Box at={[22, 52, 34]} size={[6, 6, 6]} tone="record" className="hop" style={travel([22, 52, 34], [94, 30, 17])} />
       </g>
     </Fig>
   );

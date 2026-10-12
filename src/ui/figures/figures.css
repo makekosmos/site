@@ -15,10 +15,7 @@
   margin: 0;
   border: 1px solid var(--line);
   border-radius: var(--r);
-  background:
-    radial-gradient(circle at 50% 42%, rgb(169 156 255 / 0.07), transparent 62%),
-    radial-gradient(var(--line) 1px, transparent 1px) 0 0 / 14px 14px,
-    var(--card);
+  background: radial-gradient(circle at 50% 40%, rgb(255 255 255 / 0.045), transparent 65%), var(--card);
   overflow: hidden;
 }
 
@@ -88,33 +85,37 @@
 }
 
 .t-engine {
-  --top: #c4baff;
-  --left: #8b7de8;
-  --right: #6a5cc7;
+  --top: #dddbd5;
+  --left: #b8b6b0;
+  --right: #8d8b85;
 }
 
 .t-plate {
-  --top: #2e2c26;
-  --left: #25231f;
-  --right: #1d1c18;
+  --top: #2a2925;
+  --left: #21201d;
+  --right: #1a1917;
 }
 
 .t-tile {
-  --top: #4a473f;
-  --left: #393731;
-  --right: #2d2b26;
+  --top: #44433f;
+  --left: #343330;
+  --right: #292826;
 }
 
-.t-amber {
-  --top: #f3c77f;
-  --left: #d69d4f;
-  --right: #ad7834;
+.t-record {
+  --top: #c9c7c1;
+  --left: #9a9892;
+  --right: #74726d;
 }
 
 .t-phone {
-  --top: #181713;
-  --left: #34322c;
-  --right: #2a2823;
+  --top: #171715;
+  --left: #343330;
+  --right: #292826;
+}
+
+.iso image {
+  filter: grayscale(1) contrast(1.1);
 }
 
 .socket {
@@ -183,7 +184,7 @@
 }
 
 .lit {
-  fill: var(--accent);
+  fill: #fff;
   opacity: 0;
   animation: lit 4.8s ease-out infinite;
 }
@@ -211,7 +212,7 @@
 
 .ring {
   fill: none;
-  stroke: #fff;
+  stroke: #1a1917;
   stroke-width: 1.2;
   transform-box: fill-box;
   transform-origin: center;
@@ -230,7 +231,7 @@
 }
 
 .wire {
-  stroke: var(--accent);
+  stroke: var(--fg-2);
   stroke-width: 1.2;
   stroke-dasharray: 2 5;
   stroke-linecap: round;

@@ -11,7 +11,7 @@ export function pt([x, y, z]: P3): [number, number] {
 
 const poly = (points: P3[]) => points.map((p) => pt(p).map((n) => n.toFixed(1)).join(",")).join(" ");
 
-export type Tone = "engine" | "plate" | "tile" | "amber" | "phone";
+export type Tone = "engine" | "plate" | "tile" | "record" | "phone";
 
 export function Box({
   at: [x, y, z],
