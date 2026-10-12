@@ -2,9 +2,10 @@ import { useEffect, useRef } from "react";
 
 const CELL = 11;
 const STOPS = [
-  [160, 224, 171],
-  [255, 172, 46],
-  [165, 45, 37],
+  [90, 84, 201],
+  [157, 139, 255],
+  [214, 155, 210],
+  [255, 220, 196],
 ] as const;
 const BINS = 32;
 
@@ -40,7 +41,7 @@ function drawCheck(cols: number, rows: number) {
   return cut;
 }
 
-export function HalftoneMark() {
+export function Halftone({ mark = false }: { mark?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -60,7 +61,7 @@ export function HalftoneMark() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       cols = Math.ceil(width / CELL) + 1;
       rows = Math.ceil(height / CELL) + 1;
-      cut = drawCheck(cols, rows);
+      cut = mark ? drawCheck(cols, rows) : new Float32Array(cols * rows);
     };
 
     const paint = (time: number) => {
@@ -115,7 +116,7 @@ export function HalftoneMark() {
       cancelAnimationFrame(frame);
       observer.disconnect();
     };
-  }, []);
+  }, [mark]);
 
   return <canvas ref={canvasRef} className="halftone" aria-hidden="true" />;
 }
