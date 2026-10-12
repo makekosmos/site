@@ -1,6 +1,6 @@
 import { createContext, useContext, type ReactNode } from "react";
 import { ArrowRight } from "../components/Icons";
-import { localize } from "../i18n";
+import { LANG, localize, setLang, type Lang } from "../i18n";
 import { CONTACT_EMAIL, DOWNLOAD_URL, RELEASES_URL, REPO_URL } from "../links";
 
 const COPY = localize({
@@ -10,7 +10,6 @@ const COPY = localize({
     download: "Download",
     preview: "app preview",
     apps: "Apps",
-    android: "Agenda for Android",
     releases: "Releases",
     contact: "Contact",
     tagline: "Local-first. Your data stays on your devices.",
@@ -21,7 +20,6 @@ const COPY = localize({
     download: "Скачать",
     preview: "превью приложения",
     apps: "Приложения",
-    android: "Agenda для Android",
     releases: "Релизы",
     contact: "Контакты",
     tagline: "Local-first. Ваши данные остаются на ваших устройствах.",
@@ -82,9 +80,6 @@ export function Window({ title, children }: { title: string; children: ReactNode
 // Public-domain paintings, via Wikimedia Commons.
 const ART = {
   haystacks: { artist: "Claude Monet", title: "Haystacks, end of Summer", year: "1891" },
-  heron: { artist: "George Inness", title: "The Home of the Heron", year: "1893" },
-  lilies: { artist: "Claude Monet", title: "Water Lilies", year: "1916–19" },
-  dnieper: { artist: "Arkhip Kuindzhi", title: "Moonlit Night on the Dnieper", year: "1880" },
   sierra: { artist: "Albert Bierstadt", title: "Among the Sierra Nevada, California", year: "1868" },
   fuji: { artist: "Katsushika Hokusai", title: "Fine Wind, Clear Morning", year: "c. 1831" },
   etretat: { artist: "Claude Monet", title: "The Beach at Étretat", year: "1885" },
@@ -150,7 +145,6 @@ const FOOTER = [
     title: COPY.apps,
     links: [
       { label: "Agenda", href: "/agenda" },
-      { label: COPY.android, href: "https://github.com/makekosmos/agenda-android/releases/latest" },
     ],
   },
   {
@@ -162,6 +156,11 @@ const FOOTER = [
     ],
   },
   { title: COPY.contact, links: [{ label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` }] },
+];
+
+const LANGS: [Lang, string][] = [
+  ["en", "English"],
+  ["ru", "Русский"],
 ];
 
 export function Footer() {
@@ -187,6 +186,13 @@ export function Footer() {
         <div className="footer-base">
           <span>© {new Date().getFullYear()} Mundus</span>
           <span>{COPY.tagline}</span>
+          <div className="segmented" role="group" aria-label="Language">
+            {LANGS.map(([lang, label]) => (
+              <button key={lang} type="button" lang={lang} aria-pressed={lang === LANG} onClick={() => setLang(lang)}>
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

@@ -25,54 +25,54 @@ const label = (f: Feature): Label => (LANG === "ru" ? f.ru : f);
 
 const COPY = localize({
   en: {
-    title: "Agenda is a calm list for everything you have to do.",
-    lead: " Today, this week and someday, on your computer and your phone.",
+    title: "Stop carrying your day in your head.",
+    lead: " Agenda holds it. You do the work.",
     desktop: "Get it for desktop",
     how: "How Agenda works",
     rows: [
       {
-        title: "Catch it before it slips",
-        body: "Everything lands in the Inbox first. Write it the way you say it, and a day word puts it on that day.",
+        title: "Write it down. Let it go.",
+        body: "Type it the way you'd say it. “Gym friday” lands on Friday. Your head is free again.",
       },
       {
-        title: "Same list on your phone",
-        body: "Agenda for Android pairs with your computer over the local network. No account and no cloud copy.",
+        title: "One list. Every device.",
+        body: "Your phone pairs with your computer. No account. No cloud. Just your list.",
       },
       {
-        title: "See how the week went",
-        body: "Finished tasks go to the Logbook. Your streak and weekly stats show the pace without nagging.",
+        title: "Proof you showed up.",
+        body: "Done tasks go to the Logbook. The streak grows. Rhythm beats motivation.",
       },
     ],
     featuresTitle: "What works where",
     checked: (n: number, date: string) => `${n} features, checked against the code on ${date}`,
     feature: "Feature",
     status: { yes: "Available", partial: "Partly, see note", no: "Not yet" } as Record<Status, string>,
-    cta: "Start with today.",
+    cta: "Clear your head. Start today.",
   },
   ru: {
-    title: "Agenda — спокойный список всего, что нужно сделать.",
-    lead: " Сегодня, на этой неделе и когда-нибудь, на компьютере и телефоне.",
+    title: "Хватит держать день в голове.",
+    lead: " Agenda помнит за вас. Вы делаете дело.",
     desktop: "Скачать для компьютера",
     how: "Как работает Agenda",
     rows: [
       {
-        title: "Записать, пока не забылось",
-        body: "Всё сначала попадает во Входящие. Пишите, как говорите, и день недели в тексте поставит задачу на этот день.",
+        title: "Записал и забыл.",
+        body: "Пишите, как говорите. «Зал в пятницу» встанет на пятницу. Голова снова свободна.",
       },
       {
-        title: "Тот же список на телефоне",
-        body: "Agenda для Android подключается к компьютеру по локальной сети. Без аккаунта и копии в облаке.",
+        title: "Один список. Везде.",
+        body: "Телефон подключается к компьютеру напрямую. Без аккаунта. Без облака. Только ваш список.",
       },
       {
-        title: "Как прошла неделя",
-        body: "Выполненные задачи уходят в журнал. Серия и статистика за неделю показывают темп, но не подгоняют.",
+        title: "Видно, что вы в деле.",
+        body: "Сделанное уходит в журнал. Серия растёт. Ритм важнее мотивации.",
       },
     ],
     featuresTitle: "Что где работает",
     checked: (n: number, date: string) => `${n} функций, сверено с кодом ${date}`,
     feature: "Функция",
     status: { yes: "Есть", partial: "Частично, см. примечание", no: "Пока нет" } as Record<Status, string>,
-    cta: "Начните с сегодняшнего дня.",
+    cta: "Освободите голову. Начните сегодня.",
   },
 });
 const STATUS = COPY.status;
