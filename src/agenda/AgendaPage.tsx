@@ -154,7 +154,7 @@ export function AgendaPage() {
               title={COPY.rows[1].title}
               body={COPY.rows[1].body}
             >
-              <Shot src="week-phone" alt={COPY.shots.phone} width={540} height={1171} phone />
+              <Shot src="week-phone" alt={COPY.shots.phone} width={540} height={1200} phone />
             </Row>
             <Row
               art="pines"

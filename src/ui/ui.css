@@ -573,70 +573,20 @@ a.card:hover {
 
 /* ---------- screenshots ---------- */
 
-.shot-frame {
-  position: relative;
-  container-type: inline-size;
-}
-
 .shot {
   display: block;
-  width: 100%;
   height: auto;
 }
 
-/* Units are cqw so the controls scale with the render: the macOS window is 1280pt wide, lights sit at 14pt. */
-.shot-lights {
-  position: absolute;
-  top: 1.09cqw;
-  left: 1.09cqw;
-  display: flex;
-  gap: 0.63cqw;
-}
-
-.shot-lights i {
-  width: 0.94cqw;
-  height: 0.94cqw;
-  border-radius: 50%;
-  background: #ff5f57;
-  box-shadow: inset 0 0 0 0.5px rgb(0 0 0 / 0.2);
-}
-
-.shot-lights i:nth-child(2) {
-  background: #febc2e;
-}
-
-.shot-lights i:nth-child(3) {
-  background: #28c840;
+.shot-picture {
+  display: contents;
 }
 
 .shot-phone {
-  width: min(100%, 270px);
-  border-radius: 28px;
-  background: #0d0c11;
-}
-
-.shot-status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 9cqw;
-  padding: 1.5cqw 8cqw 0;
-  font-size: 4.2cqw;
-  color: #edecea;
-}
-
-.shot-status svg {
-  width: 13cqw;
-  height: auto;
-}
-
-.shot-home {
   display: block;
-  width: 30cqw;
-  height: 1.3cqw;
-  margin: 1.5cqw auto 2.5cqw;
-  border-radius: 99px;
-  background: rgb(237 236 234 / 0.75);
+  width: min(100%, 290px);
+  height: auto;
+  filter: drop-shadow(0 30px 40px rgb(6 5 20 / 0.5));
 }
 
 @media (max-width: 640px) {
@@ -644,13 +594,8 @@ a.card:hover {
     padding-bottom: 52px;
   }
 
-  .shot-wide-only .shot-lights {
-    display: none;
-  }
-
   .shot-phone {
-    width: min(100%, 210px);
-    border-radius: 22px;
+    width: min(100%, 220px);
   }
 }
 
