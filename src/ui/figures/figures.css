@@ -9,7 +9,12 @@
   list-style: none;
 }
 
+.figs > li {
+  display: flex;
+}
+
 .fig {
+  flex: 1;
   display: flex;
   flex-direction: column;
   margin: 0;

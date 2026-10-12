@@ -10,7 +10,6 @@ const COPY = localize({
     download: "Download",
     preview: "app preview",
     apps: "Apps",
-    android: "Agenda for Android",
     releases: "Releases",
     contact: "Contact",
     tagline: "Local-first. Your data stays on your devices.",
@@ -21,7 +20,6 @@ const COPY = localize({
     download: "Скачать",
     preview: "превью приложения",
     apps: "Приложения",
-    android: "Agenda для Android",
     releases: "Релизы",
     contact: "Контакты",
     tagline: "Local-first. Ваши данные остаются на ваших устройствах.",
@@ -82,9 +80,6 @@ export function Window({ title, children }: { title: string; children: ReactNode
 // Public-domain paintings, via Wikimedia Commons.
 const ART = {
   haystacks: { artist: "Claude Monet", title: "Haystacks, end of Summer", year: "1891" },
-  heron: { artist: "George Inness", title: "The Home of the Heron", year: "1893" },
-  lilies: { artist: "Claude Monet", title: "Water Lilies", year: "1916–19" },
-  dnieper: { artist: "Arkhip Kuindzhi", title: "Moonlit Night on the Dnieper", year: "1880" },
   sierra: { artist: "Albert Bierstadt", title: "Among the Sierra Nevada, California", year: "1868" },
   fuji: { artist: "Katsushika Hokusai", title: "Fine Wind, Clear Morning", year: "c. 1831" },
   etretat: { artist: "Claude Monet", title: "The Beach at Étretat", year: "1885" },
@@ -150,7 +145,6 @@ const FOOTER = [
     title: COPY.apps,
     links: [
       { label: "Agenda", href: "/agenda" },
-      { label: COPY.android, href: "https://github.com/makekosmos/agenda-android/releases/latest" },
     ],
   },
   {
