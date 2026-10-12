@@ -360,38 +360,6 @@ p {
   text-align: left;
 }
 
-.window-bar {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  height: 34px;
-  padding: 0 13px;
-  border-bottom: 1px solid var(--win-line);
-}
-
-.window-bar i {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: rgb(255 255 255 / 0.12);
-}
-
-.window-bar span {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  color: var(--fg-3);
-  pointer-events: none;
-}
-
-.window-body {
-  display: flex;
-  min-height: 0;
-}
-
 .side {
   display: flex;
   flex: 0 0 196px;
@@ -605,25 +573,79 @@ a.card:hover {
 
 /* ---------- screenshots ---------- */
 
+.shot-frame {
+  position: relative;
+  container-type: inline-size;
+}
+
 .shot {
   display: block;
+  width: 100%;
   height: auto;
 }
 
-.shot-picture {
-  display: contents;
+/* Units are cqw so the controls scale with the render: the macOS window is 1280pt wide, lights sit at 14pt. */
+.shot-lights {
+  position: absolute;
+  top: 1.09cqw;
+  left: 1.09cqw;
+  display: flex;
+  gap: 0.63cqw;
 }
 
-/* The render has no status bar, so the frame adds one to keep the top corners off the title. */
+.shot-lights i {
+  width: 0.94cqw;
+  height: 0.94cqw;
+  border-radius: 50%;
+  background: #ff5f57;
+  box-shadow: inset 0 0 0 0.5px rgb(0 0 0 / 0.2);
+}
+
+.shot-lights i:nth-child(2) {
+  background: #febc2e;
+}
+
+.shot-lights i:nth-child(3) {
+  background: #28c840;
+}
+
 .shot-phone {
   width: min(100%, 270px);
-  padding-top: 14px;
   border-radius: 28px;
+  background: #0d0c11;
+}
+
+.shot-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 9cqw;
+  padding: 1.5cqw 8cqw 0;
+  font-size: 4.2cqw;
+  color: #edecea;
+}
+
+.shot-status svg {
+  width: 13cqw;
+  height: auto;
+}
+
+.shot-home {
+  display: block;
+  width: 30cqw;
+  height: 1.3cqw;
+  margin: 1.5cqw auto 2.5cqw;
+  border-radius: 99px;
+  background: rgb(237 236 234 / 0.75);
 }
 
 @media (max-width: 640px) {
   .hero-stage {
     padding-bottom: 52px;
+  }
+
+  .shot-wide-only .shot-lights {
+    display: none;
   }
 
   .shot-phone {

@@ -6,6 +6,7 @@ import { Cta, Footer, Nav, Row, Stage } from "../ui/kit";
 import { DATE } from "../ui/releases";
 import { Changelog } from "./Changelog";
 import data from "./features.json";
+import { Shot } from "../ui/Shot";
 
 
 const PLATFORMS = [
@@ -94,29 +95,6 @@ const count = (id: (typeof PLATFORMS)[number]["id"]) =>
 
 const PLATFORM = detectPlatform();
 const PlatformIcon = PLATFORM === "mac" ? AppleLogo : PLATFORM === "windows" ? WindowsLogo : Download;
-
-type Img = { src: string; width: number; height: number };
-
-function Shot({ alt, phone, eager, narrow, ...img }: Img & { alt: string; phone?: boolean; eager?: boolean; narrow?: Img }) {
-  const shot = (
-    <img
-      className={`window shot${phone ? " shot-phone" : ""}`}
-      src={`/agenda/${img.src}.webp`}
-      alt={alt}
-      width={img.width}
-      height={img.height}
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-    />
-  );
-  if (!narrow) return shot;
-  return (
-    <picture className="shot-picture">
-      <source media="(max-width: 640px)" srcSet={`/agenda/${narrow.src}.webp`} width={narrow.width} height={narrow.height} />
-      {shot}
-    </picture>
-  );
-}
 
 function Get() {
   return (

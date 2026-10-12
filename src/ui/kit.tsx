@@ -1,4 +1,4 @@
-import { createContext, useContext, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { ArrowRight } from "../components/Icons";
 import { LANG, localize, setLang, type Lang } from "../i18n";
 import { CONTACT_EMAIL, DOWNLOAD_URL, RELEASES_URL, REPO_URL } from "../links";
@@ -8,7 +8,6 @@ const COPY = localize({
     home: "Home",
     homeLabel: "Mundus home",
     download: "Download",
-    preview: "app preview",
     apps: "Apps",
     releases: "Releases",
     contact: "Contact",
@@ -18,7 +17,6 @@ const COPY = localize({
     home: "Главная",
     homeLabel: "Главная Mundus",
     download: "Скачать",
-    preview: "превью приложения",
     apps: "Приложения",
     releases: "Релизы",
     contact: "Контакты",
@@ -56,24 +54,6 @@ export function Nav({ current }: { current?: string }) {
         </div>
       </div>
     </header>
-  );
-}
-
-// Inside the Mundus shell an app has no chrome of its own, only its body.
-export const Shelled = createContext(false);
-
-export function Window({ title, children }: { title: string; children: ReactNode }) {
-  if (useContext(Shelled)) return <div className="window-body">{children}</div>;
-  return (
-    <figure className="window" aria-label={`${title} ${COPY.preview}`}>
-      <div className="window-bar" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <span>{title}</span>
-      </div>
-      <div className="window-body">{children}</div>
-    </figure>
   );
 }
 
