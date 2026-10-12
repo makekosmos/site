@@ -97,7 +97,13 @@ export function Changelog() {
             ))}
           </div>
         </div>
-        {state.status === "loading" && <p className="muted">{COPY.loading}</p>}
+        {state.status === "loading" && (
+          <ol className="releases" aria-label={COPY.loading}>
+            {Array.from({ length: 4 }, (_, i) => (
+              <li key={i} className="release release-skeleton" aria-hidden="true" />
+            ))}
+          </ol>
+        )}
         {state.status === "error" && (
           <p className="muted">
             {COPY.error}{" "}
