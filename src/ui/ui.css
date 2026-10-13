@@ -299,9 +299,33 @@ p {
   margin-top: 28px;
 }
 
-.hero .stage {
+.hero-stage {
   margin-top: clamp(40px, 5vw, 64px);
 }
+
+/* ---------- hero art: a halftone painting fading into the page ---------- */
+
+main {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-art {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: clamp(420px, 72vh, 720px);
+  pointer-events: none;
+}
+
+.hero-art-shader {
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.75) 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.75) 45%, transparent 100%);
+}
+
 
 /* ---------- stage: a painting holding a product window ---------- */
 
@@ -325,22 +349,6 @@ p {
   object-fit: cover;
 }
 
-.stage-credit {
-  position: absolute;
-  right: 14px;
-  bottom: 10px;
-  max-width: calc(100% - 28px);
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgb(0 0 0 / 0.45);
-  backdrop-filter: blur(6px);
-  color: rgb(255 255 255 / 0.82);
-  font-size: 11px;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 /* ---------- window: the product chrome every mock sits in ---------- */
 
@@ -561,16 +569,6 @@ a.card:hover {
   color: var(--fg-3);
 }
 
-/* ---------- hero stage ---------- */
-
-.hero-stage {
-  padding: clamp(16px, 6vw, 88px) clamp(12px, 7vw, 120px);
-}
-
-.hero-stage .window {
-  max-width: 1040px;
-}
-
 /* ---------- screenshots ---------- */
 
 .shot {
@@ -590,10 +588,6 @@ a.card:hover {
 }
 
 @media (max-width: 640px) {
-  .hero-stage {
-    padding-bottom: 52px;
-  }
-
   .shot-phone {
     width: min(100%, 220px);
   }
