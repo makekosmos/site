@@ -1,0 +1,347 @@
+{
+  "checked": "2026-10-13",
+  "sources": {
+    "windows": {
+      "repo": "makekosmos/memoria-gpui",
+      "ref": "v0.7.3"
+    },
+    "macos": {
+      "repo": "makekosmos/memoria-gpui",
+      "ref": "v0.7.3"
+    }
+  },
+  "groups": [
+    {
+      "name": "Library",
+      "ru": "Библиотека",
+      "features": [
+        {
+          "name": "Everything view: all notes and books",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Всё: заметки и книги в одной сетке"
+          }
+        },
+        {
+          "name": "Sidebar with types, collections and pinned items",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Боковая панель: типы, коллекции, закреплённое"
+          }
+        },
+        {
+          "name": "Collection per object type",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Коллекция по типу объекта"
+          }
+        },
+        {
+          "name": "Pin items to the sidebar",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Закрепление в боковой панели"
+          }
+        },
+        {
+          "name": "Back and forward",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Назад и вперёд"
+          }
+        },
+        {
+          "name": "Trash with restore",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Корзина с восстановлением"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "ru": "Поиск",
+      "features": [
+        {
+          "name": "Search across all objects",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Поиск по всем объектам"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Editor",
+      "ru": "Редактор",
+      "features": [
+        {
+          "name": "Markdown with live preview",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Markdown с живым просмотром"
+          }
+        },
+        {
+          "name": "Autosave and character count",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Автосохранение и счётчик символов"
+          }
+        },
+        {
+          "name": "Formatting shortcuts",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Shortcuts use Ctrl, not Cmd",
+          "ru": {
+            "name": "Горячие клавиши форматирования",
+            "note": "Сочетания на Ctrl, не на Cmd"
+          }
+        },
+        {
+          "name": "Smart paste: HTML becomes Markdown",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Умная вставка: HTML превращается в Markdown"
+          }
+        },
+        {
+          "name": "Images in notes",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Изображения в заметках"
+          }
+        },
+        {
+          "name": "Code-block language picker",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Shortcuts use Ctrl, not Cmd",
+          "ru": {
+            "name": "Выбор языка в блоке кода",
+            "note": "Сочетания на Ctrl, не на Cmd"
+          }
+        },
+        {
+          "name": "Zen mode",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Shortcuts use Ctrl, not Cmd",
+          "ru": {
+            "name": "Режим дзен",
+            "note": "Сочетания на Ctrl, не на Cmd"
+          }
+        },
+        {
+          "name": "Text zoom",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Shortcuts use Ctrl, not Cmd",
+          "ru": {
+            "name": "Масштаб текста",
+            "note": "Сочетания на Ctrl, не на Cmd"
+          }
+        },
+        {
+          "name": "Undo and redo",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Shortcuts use Ctrl, not Cmd",
+          "ru": {
+            "name": "Отмена и повтор",
+            "note": "Сочетания на Ctrl, не на Cmd"
+          }
+        },
+        {
+          "name": "Spellcheck",
+          "windows": "no",
+          "macos": "no",
+          "note": "The switch is there, the check is not",
+          "ru": {
+            "name": "Проверка орфографии",
+            "note": "Переключатель есть, проверки нет"
+          }
+        },
+        {
+          "name": "Reader mode",
+          "windows": "no",
+          "macos": "no",
+          "note": "The switch is there, the mode is not",
+          "ru": {
+            "name": "Режим чтения",
+            "note": "Переключатель есть, режима нет"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Diary",
+      "ru": "Дневник",
+      "features": [
+        {
+          "name": "Diary feed",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Лента дневника"
+          }
+        },
+        {
+          "name": "Quick entry",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Быстрая запись"
+          }
+        },
+        {
+          "name": "Entry kinds: plain, idea, task, highlight",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Виды записей: обычная, идея, задача, акцент"
+          }
+        },
+        {
+          "name": "Edit and delete entries",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Правка и удаление записей"
+          }
+        },
+        {
+          "name": "Replies in a thread",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Ответы в ветке"
+          }
+        },
+        {
+          "name": "Calendar with jump to a date",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Календарь с переходом к дате"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Typed objects",
+      "ru": "Объекты с типом",
+      "features": [
+        {
+          "name": "Properties for books, people, games and workouts",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Свойства у книг, людей, игр и тренировок"
+          }
+        },
+        {
+          "name": "Book cover from a link or a dropped file",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Обложка книги по ссылке или из файла"
+          }
+        },
+        {
+          "name": "Fill in a book from a link or ISBN",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Данные книги по ссылке или ISBN"
+          }
+        },
+        {
+          "name": "Image objects",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Изображения как объекты"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Windows and safety",
+      "ru": "Окна и сохранность",
+      "features": [
+        {
+          "name": "Notes as floating sticker windows",
+          "windows": "partial",
+          "macos": "partial",
+          "note": "The pin button only shows state",
+          "ru": {
+            "name": "Заметки-стикеры в отдельных окнах",
+            "note": "Кнопка закрепления только показывает состояние"
+          }
+        },
+        {
+          "name": "Resolve edit conflicts between devices",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Разбор конфликтов правок между устройствами"
+          }
+        },
+        {
+          "name": "Notice when the Engine is not running",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Уведомление, если Engine не запущен"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Import and export",
+      "ru": "Импорт и экспорт",
+      "features": [
+        {
+          "name": "Export all notes to an Obsidian vault",
+          "windows": "yes",
+          "macos": "yes",
+          "note": "From the command line only",
+          "ru": {
+            "name": "Экспорт всех заметок в хранилище Obsidian",
+            "note": "Только из командной строки"
+          }
+        },
+        {
+          "name": "Export from the app window",
+          "windows": "no",
+          "macos": "no",
+          "ru": {
+            "name": "Экспорт из окна приложения"
+          }
+        },
+        {
+          "name": "Import an Obsidian vault",
+          "windows": "no",
+          "macos": "no",
+          "ru": {
+            "name": "Импорт хранилища Obsidian"
+          }
+        }
+      ]
+    }
+  ]
+}
