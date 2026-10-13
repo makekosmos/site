@@ -2,11 +2,20 @@ import { useMemo } from "react";
 import { AppleLogo, ArrowRight, Branch, Download, Monitor, Phone, WindowsLogo } from "./components/Icons";
 import { localize } from "./i18n";
 import { DOWNLOAD_URL, RELEASES_URL } from "./links";
+import data from "./features/features.json";
 import { detectPlatform } from "./platform";
 import { ArkFigure, EngineFigure, SystemFigure } from "./ui/figures/Figures";
+import { FeatureTable, featureTotal, type FeatureGroup, type Status } from "./ui/FeatureTable";
 import { Cta, Footer, Nav, Stage } from "./ui/kit";
 import { ReleaseStrip } from "./ui/ReleaseStrip";
+import { DATE } from "./ui/releases";
 import { Shot } from "./ui/Shot";
+
+const PLATFORMS = [
+  { id: "windows", label: "Windows" },
+  { id: "macos", label: "macOS" },
+] as const;
+const groups = data.groups as FeatureGroup<(typeof PLATFORMS)[number]["id"]>[];
 
 const COPY = localize({
   en: {
@@ -39,6 +48,10 @@ const COPY = localize({
       { Icon: Monitor, title: "Windows and macOS", body: "A native app for both." },
       { Icon: Branch, title: "Built in the open", body: "Every release is published on GitHub." },
     ],
+    featuresTitle: "What Mundus can do",
+    checked: (n: number, date: string) => `${n} features, checked against the code on ${date}`,
+    feature: "Feature",
+    status: { yes: "Available", partial: "Partly, see note", no: "Not yet" } as Record<Status, string>,
     cta: "Try Mundus now.",
   },
   ru: {
@@ -71,6 +84,10 @@ const COPY = localize({
       { Icon: Monitor, title: "Windows и macOS", body: "Нативное приложение для обеих систем." },
       { Icon: Branch, title: "Открытая разработка", body: "Каждый релиз публикуется на GitHub." },
     ],
+    featuresTitle: "Что умеет Mundus",
+    checked: (n: number, date: string) => `${n} функций, сверено с кодом ${date}`,
+    feature: "Функция",
+    status: { yes: "Есть", partial: "Частично, см. примечание", no: "Пока нет" } as Record<Status, string>,
     cta: "Попробуйте Mundus.",
   },
 });
@@ -153,6 +170,18 @@ export default function App() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="section" id="features" aria-labelledby="features-title">
+          <div className="wrap">
+            <div className="section-head">
+              <h2 className="h2-lg" id="features-title">
+                {COPY.featuresTitle}
+              </h2>
+              <p className="muted">{COPY.checked(featureTotal(groups), DATE.format(new Date(data.checked)))}</p>
+            </div>
+            <FeatureTable groups={groups} platforms={PLATFORMS} featureLabel={COPY.feature} status={COPY.status} />
           </div>
         </section>
 

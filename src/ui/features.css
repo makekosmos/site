@@ -1,0 +1,132 @@
+/* ---------- feature table ---------- */
+
+.table-card {
+  overflow-x: auto;
+  border-radius: var(--r);
+  background: var(--card);
+}
+
+.features {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.features th,
+.features td {
+  padding: 12px 24px;
+  text-align: left;
+  font-weight: 400;
+}
+
+.features thead th {
+  position: sticky;
+  top: 0;
+  padding-top: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg-2);
+}
+
+.features .platform,
+.features td {
+  width: 140px;
+  text-align: center;
+}
+
+.score {
+  display: block;
+  margin-top: 2px;
+  color: var(--fg-3);
+}
+
+.features .group th {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-top: 1px solid var(--line);
+  background: rgb(255 255 255 / 0.03);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.features thead + tbody .group th {
+  border-top: 0;
+}
+
+.features tbody tr:not(.group) {
+  border-top: 1px solid var(--line);
+  transition: background-color 0.15s ease;
+}
+
+.features tbody tr.group + tr {
+  border-top: 0;
+}
+
+.features tbody tr:not(.group):hover {
+  background: rgb(255 255 255 / 0.025);
+}
+
+.note-text {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--fg-3);
+}
+
+.mark {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.mark.yes {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.mark.partial {
+  background: linear-gradient(90deg, var(--accent) 50%, transparent 50%);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+.mark.no {
+  box-shadow: inset 0 0 0 1.5px var(--line-2);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--fg-2);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 720px) {
+  .features th,
+  .features td {
+    padding: 10px 12px;
+  }
+
+  .features .platform,
+  .features td {
+    width: 64px;
+  }
+
+  .features {
+    font-size: 14px;
+  }
+}

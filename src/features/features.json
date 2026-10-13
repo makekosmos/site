@@ -1,0 +1,281 @@
+{
+  "checked": "2026-10-13",
+  "sources": {
+    "windows": {
+      "repo": "makekosmos/cortex",
+      "ref": "v0.10.14"
+    },
+    "macos": {
+      "repo": "makekosmos/cortex",
+      "ref": "v0.10.14"
+    }
+  },
+  "groups": [
+    {
+      "name": "Apps",
+      "ru": "Приложения",
+      "features": [
+        {
+          "name": "App store: install, update and remove apps",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Catalog depends on the build",
+          "ru": {
+            "name": "Каталог приложений: установка, обновление и удаление",
+            "note": "Каталог зависит от сборки"
+          }
+        },
+        {
+          "name": "Permission prompt before an app is installed",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Запрос разрешений перед установкой приложения"
+          }
+        },
+        {
+          "name": "Apps run isolated from each other",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Приложения работают изолированно друг от друга"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Voice and focus",
+      "ru": "Голос и фокус",
+      "features": [
+        {
+          "name": "Dictation with a hotkey",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Диктовка по горячей клавише"
+          }
+        },
+        {
+          "name": "Choose your microphone",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Выбор микрофона"
+          }
+        },
+        {
+          "name": "Mute other audio while recording",
+          "windows": "yes",
+          "macos": "no",
+          "ru": {
+            "name": "Приглушение звука при записи"
+          }
+        },
+        {
+          "name": "Pomodoro timer",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Таймер Помодоро"
+          }
+        },
+        {
+          "name": "Focus mode with blocklists",
+          "windows": "partial",
+          "macos": "no",
+          "note": "Blocking sites needs an extra permission",
+          "ru": {
+            "name": "Режим фокуса со списками блокировки",
+            "note": "Блокировка сайтов требует отдельного разрешения"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data and sync",
+      "ru": "Данные и синхронизация",
+      "features": [
+        {
+          "name": "Everything stored on your computer",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Всё хранится на вашем компьютере"
+          }
+        },
+        {
+          "name": "Browse your data",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Просмотр данных"
+          }
+        },
+        {
+          "name": "Backups: create, verify, restore",
+          "windows": "yes",
+          "macos": "yes",
+          "note": "A snapshot is made every night",
+          "ru": {
+            "name": "Резервные копии: создание, проверка, восстановление",
+            "note": "Снимок создаётся каждую ночь"
+          }
+        },
+        {
+          "name": "Disk usage and cleanup",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Занятое место и очистка"
+          }
+        },
+        {
+          "name": "Sync between your devices",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Синхронизация между вашими устройствами"
+          }
+        },
+        {
+          "name": "Pair a device with a code",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Подключение устройства по коду"
+          }
+        },
+        {
+          "name": "Notes folder as Markdown",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Заметки в виде Markdown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Search and connections",
+      "ru": "Поиск и подключения",
+      "features": [
+        {
+          "name": "Search installed apps and files",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Faster file search on Windows",
+          "ru": {
+            "name": "Поиск по приложениям и файлам",
+            "note": "Быстрый поиск файлов только на Windows"
+          }
+        },
+        {
+          "name": "Integrations with outside services",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Интеграции с внешними сервисами"
+          }
+        },
+        {
+          "name": "API keys kept on your computer",
+          "windows": "partial",
+          "macos": "partial",
+          "note": "Only Groq works for now",
+          "ru": {
+            "name": "API-ключи на вашем компьютере",
+            "note": "Пока работает только Groq"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Manager",
+      "ru": "Менеджер",
+      "features": [
+        {
+          "name": "Appearance: theme and window style",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "Fewer window styles on macOS",
+          "ru": {
+            "name": "Внешний вид: тема и стиль окна",
+            "note": "На macOS меньше стилей окна"
+          }
+        },
+        {
+          "name": "Start with the system",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Запуск вместе с системой"
+          }
+        },
+        {
+          "name": "Tray menu",
+          "windows": "yes",
+          "macos": "no",
+          "ru": {
+            "name": "Меню в трее"
+          }
+        },
+        {
+          "name": "App usage statistics",
+          "windows": "yes",
+          "macos": "no",
+          "ru": {
+            "name": "Статистика использования приложений"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Updates and support",
+      "ru": "Обновления и поддержка",
+      "features": [
+        {
+          "name": "Automatic updates",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Автоматические обновления"
+          }
+        },
+        {
+          "name": "Nightly builds",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Ночные сборки"
+          }
+        },
+        {
+          "name": "Installer",
+          "windows": "yes",
+          "macos": "partial",
+          "note": "DMG, not notarized",
+          "ru": {
+            "name": "Установщик",
+            "note": "DMG без нотаризации"
+          }
+        },
+        {
+          "name": "Logs, crash reports and a support bundle",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Журналы, отчёты о сбоях и пакет поддержки"
+          }
+        },
+        {
+          "name": "Built-in diagnostics",
+          "windows": "yes",
+          "macos": "yes",
+          "ru": {
+            "name": "Встроенная диагностика"
+          }
+        }
+      ]
+    }
+  ]
+}
