@@ -21,12 +21,12 @@ const COPY = localize({
   },
 });
 
-export const CHANNELS = [
+export type Channel = { id: string; label: string; repo: string };
+
+export const AGENDA_CHANNELS: readonly Channel[] = [
   { id: "desktop", label: "Windows · macOS", repo: "makekosmos/agenda-gpui" },
   { id: "android", label: "Android", repo: "makekosmos/agenda-android" },
-] as const;
-
-type Channel = (typeof CHANNELS)[number];
+];
 
 const INLINE = /\[([^\]]+)\]\((https:\/\/[^)\s]+)\)|\*\*([^*]+)\*\*|`([^`]+)`|(https:\/\/github\.com\/[^\s)]+)|@([A-Za-z0-9-]+)/g;
 
@@ -78,8 +78,8 @@ function Notes({ body }: { body: string }) {
   return <div className="notes">{blocks}</div>;
 }
 
-export function Changelog() {
-  const [channel, setChannel] = useState<Channel>(CHANNELS[0]);
+export function Changelog({ channels = AGENDA_CHANNELS }: { channels?: readonly Channel[] }) {
+  const [channel, setChannel] = useState<Channel>(channels[0]);
   const state = useReleases(channel.repo);
 
   return (
@@ -89,13 +89,15 @@ export function Changelog() {
           <h2 className="h2-lg" id="changelog-title">
             {COPY.title}
           </h2>
-          <div className="segmented" role="tablist" aria-label={COPY.platform}>
-            {CHANNELS.map((c) => (
-              <button key={c.id} type="button" role="tab" aria-selected={c.id === channel.id} onClick={() => setChannel(c)}>
-                {c.label}
-              </button>
-            ))}
-          </div>
+          {channels.length > 1 && (
+            <div className="segmented" role="tablist" aria-label={COPY.platform}>
+              {channels.map((c) => (
+                <button key={c.id} type="button" role="tab" aria-selected={c.id === channel.id} onClick={() => setChannel(c)}>
+                  {c.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         {state.status === "loading" && (
           <ol className="releases" aria-label={COPY.loading}>

@@ -27,6 +27,7 @@ const COPY = localize({
 const NAV = [
   { label: COPY.home, href: "/" },
   { label: "Agenda", href: "/agenda" },
+  { label: "Memoria", href: "/memoria" },
 ];
 
 export function Nav({ current }: { current?: string }) {
@@ -125,6 +126,7 @@ const FOOTER = [
     title: COPY.apps,
     links: [
       { label: "Agenda", href: "/agenda" },
+      { label: "Memoria", href: "/memoria" },
     ],
   },
   {
