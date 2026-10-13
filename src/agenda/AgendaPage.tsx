@@ -1,7 +1,8 @@
 import { AppleLogo, ArrowRight, Download, WindowsLogo } from "../components/Icons";
-import { LANG, localize } from "../i18n";
+import { localize } from "../i18n";
 import { DOWNLOAD_URL } from "../links";
 import { detectPlatform } from "../platform";
+import { FeatureTable, featureTotal, type FeatureGroup, type Status } from "../ui/FeatureTable";
 import { Cta, Footer, Nav, Row, Stage } from "../ui/kit";
 import { DATE } from "../ui/releases";
 import { Changelog } from "./Changelog";
@@ -15,11 +16,7 @@ const PLATFORMS = [
   { id: "android", label: "Android" },
 ] as const;
 
-type Status = "yes" | "partial" | "no";
-type Label = { name: string; note?: string };
-type Feature = Label & { ru: Label } & Record<(typeof PLATFORMS)[number]["id"], Status>;
-const groups = data.groups as { name: string; ru: string; features: Feature[] }[];
-const label = (f: Feature): Label => (LANG === "ru" ? f.ru : f);
+const groups = data.groups as FeatureGroup<(typeof PLATFORMS)[number]["id"]>[];
 
 const COPY = localize({
   en: {
@@ -87,11 +84,7 @@ const COPY = localize({
     },
   },
 });
-const STATUS = COPY.status;
-
-const total = groups.reduce((n, g) => n + g.features.length, 0);
-const count = (id: (typeof PLATFORMS)[number]["id"]) =>
-  groups.reduce((n, g) => n + g.features.filter((f) => f[id] === "yes").length, 0);
+const total = featureTotal(groups);
 
 const PLATFORM = detectPlatform();
 const PlatformIcon = PLATFORM === "mac" ? AppleLogo : PLATFORM === "windows" ? WindowsLogo : Download;
@@ -176,53 +169,7 @@ export function AgendaPage() {
                 {COPY.checked(total, DATE.format(new Date(data.checked)))}
               </p>
             </div>
-            <div className="table-card">
-              <table className="features">
-                <thead>
-                  <tr>
-                    <th scope="col">{COPY.feature}</th>
-                    {PLATFORMS.map((p) => (
-                      <th key={p.id} scope="col" className="platform">
-                        {p.label}
-                        <span className="score mono">
-                          {count(p.id)}/{total}
-                        </span>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                {groups.map((group) => (
-                  <tbody key={group.name}>
-                    <tr className="group">
-                      <th colSpan={PLATFORMS.length + 1} scope="colgroup">
-                        {LANG === "ru" ? group.ru : group.name}
-                      </th>
-                    </tr>
-                    {group.features.map((f) => (
-                      <tr key={f.name}>
-                        <th scope="row">
-                          {label(f).name}
-                          {label(f).note && <span className="note-text">{label(f).note}</span>}
-                        </th>
-                        {PLATFORMS.map((p) => (
-                          <td key={p.id}>
-                            <span className={`mark ${f[p.id]}`} title={STATUS[f[p.id]]} />
-                            <span className="sr">{STATUS[f[p.id]]}</span>
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                ))}
-              </table>
-            </div>
-            <ul className="legend">
-              {(Object.keys(STATUS) as Status[]).map((key) => (
-                <li key={key}>
-                  <span className={`mark ${key}`} aria-hidden="true" /> {STATUS[key]}
-                </li>
-              ))}
-            </ul>
+            <FeatureTable groups={groups} platforms={PLATFORMS} featureLabel={COPY.feature} status={COPY.status} />
           </div>
         </section>
 
