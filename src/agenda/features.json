@@ -1,9 +1,9 @@
 {
-  "checked": "2026-10-12",
+  "checked": "2026-10-13",
   "sources": {
-    "windows": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
-    "macos": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
-    "android": { "repo": "makekosmos/agenda-android", "ref": "v0.1.12" }
+    "windows": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.5" },
+    "macos": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.5" },
+    "android": { "repo": "makekosmos/agenda-android", "ref": "v0.1.15" }
   },
   "groups": [
     {
