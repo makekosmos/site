@@ -6,7 +6,7 @@ import data from "./features/features.json";
 import { detectPlatform } from "./platform";
 import { ArkFigure, EngineFigure, SystemFigure } from "./ui/figures/Figures";
 import { FeatureTable, featureTotal, type FeatureGroup, type Status } from "./ui/FeatureTable";
-import { Cta, Footer, Nav, Stage } from "./ui/kit";
+import { Cta, Footer, HeroArt, Nav } from "./ui/kit";
 import { ReleaseStrip } from "./ui/ReleaseStrip";
 import { DATE } from "./ui/releases";
 import { Shot } from "./ui/Shot";
@@ -109,6 +109,7 @@ export default function App() {
     <>
       <Nav current="/" />
       <main>
+        <HeroArt art="eclipse" />
         <section className="wrap hero">
           <h1 className="title">
             {COPY.title}
@@ -121,9 +122,9 @@ export default function App() {
               <ArrowRight />
             </a>
           </div>
-          <Stage art="haystacks" className="hero-stage">
+          <div className="hero-stage">
             <Shot src="week" alt={COPY.shot} width={1600} height={963} eager narrow={{ src: "week-list", width: 720, height: 615 }} />
-          </Stage>
+          </div>
         </section>
 
         <section className="section" id="how" aria-labelledby="how-title">

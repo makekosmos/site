@@ -3,7 +3,7 @@ import { localize } from "../i18n";
 import { DOWNLOAD_URL } from "../links";
 import { detectPlatform } from "../platform";
 import { FeatureTable, featureTotal, type FeatureGroup, type Status } from "../ui/FeatureTable";
-import { Cta, Footer, Nav, Row, Stage } from "../ui/kit";
+import { Cta, Footer, HeroArt, Nav, Row } from "../ui/kit";
 import { DATE } from "../ui/releases";
 import { Changelog } from "./Changelog";
 import data from "./features.json";
@@ -103,6 +103,7 @@ export function AgendaPage() {
     <>
       <Nav current="/agenda" />
       <main>
+        <HeroArt art="nocturne" />
         <section className="wrap hero">
           <h1 className="title">
             {COPY.title}
@@ -115,7 +116,7 @@ export function AgendaPage() {
               <ArrowRight />
             </a>
           </div>
-          <Stage art="fuji" className="hero-stage">
+          <div className="hero-stage">
             <Shot
               src="week"
               alt={COPY.shots.week}
@@ -124,7 +125,7 @@ export function AgendaPage() {
               eager
               narrow={{ src: "week-list", width: 720, height: 615 }}
             />
-          </Stage>
+          </div>
         </section>
 
         <section className="section" aria-label={COPY.how}>

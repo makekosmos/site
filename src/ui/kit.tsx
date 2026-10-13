@@ -1,3 +1,4 @@
+import { HalftoneCmyk } from "@paper-design/shaders-react";
 import type { ReactNode } from "react";
 import { ArrowRight } from "../components/Icons";
 import { LANG, localize, setLang, type Lang } from "../i18n";
@@ -58,26 +59,49 @@ export function Nav({ current }: { current?: string }) {
   );
 }
 
-// Public-domain paintings, via Wikimedia Commons.
-const ART = {
-  haystacks: { artist: "Claude Monet", title: "Haystacks, end of Summer", year: "1891" },
-  sierra: { artist: "Albert Bierstadt", title: "Among the Sierra Nevada, California", year: "1868" },
-  fuji: { artist: "Katsushika Hokusai", title: "Fine Wind, Clear Morning", year: "c. 1831" },
-  etretat: { artist: "Claude Monet", title: "The Beach at Étretat", year: "1885" },
-  pines: { artist: "Ivan Shishkin", title: "Morning in a Pine Forest", year: "1889" },
-} as const;
-
-export type Art = keyof typeof ART;
+// Public-domain paintings, via Wikimedia Commons:
+// sierra: Albert Bierstadt, Among the Sierra Nevada, California, 1868
+// etretat: Claude Monet, The Beach at Étretat, 1885
+// pines: Ivan Shishkin, Morning in a Pine Forest, 1889
+export type Art = "sierra" | "etretat" | "pines";
 
 export function Stage({ art, children, className = "" }: { art: Art; children: ReactNode; className?: string }) {
-  const { artist, title, year } = ART[art];
   return (
     <div className={`stage ${className}`}>
       <img className="stage-art" src={`/art/${art}.webp`} alt="" loading="lazy" decoding="async" />
       {children}
-      <small className="stage-credit">
-        {artist}, <i>{title}</i>, {year}
-      </small>
+    </div>
+  );
+}
+
+// Public-domain artworks for the hero backdrop, via Wikimedia Commons:
+// nocturne: James McNeill Whistler, Nocturne: Blue and Gold, c. 1872–75
+// eclipse: Étienne Léopold Trouvelot, Total Eclipse of the Sun, 1878
+export type HeroArtKey = "nocturne" | "eclipse";
+
+export function HeroArt({ art }: { art: HeroArtKey }) {
+  return (
+    <div className="hero-art">
+      <HalftoneCmyk
+        className="hero-art-shader"
+        image={`/art/hero/${art}.webp`}
+        colorBack="#f2efe6"
+        colorC="#00b3ff"
+        colorM="#fc4f9d"
+        colorY="#ffd900"
+        colorK="#231f20"
+        size={0.25}
+        gridNoise={0.2}
+        type="ink"
+        softness={1}
+        contrast={1.1}
+        floodC={0.1}
+        gainC={0.3}
+        gainY={0.2}
+        grainOverlay={0.15}
+        grainSize={0.5}
+        fit="cover"
+      />
     </div>
   );
 }
