@@ -1,13 +1,13 @@
 {
-  "checked": "2026-10-13",
+  "checked": "2026-10-14",
   "sources": {
     "windows": {
       "repo": "makekosmos/cortex",
-      "ref": "v0.10.14"
+      "ref": "v0.10.15"
     },
     "macos": {
       "repo": "makekosmos/cortex",
-      "ref": "v0.10.14"
+      "ref": "v0.10.15"
     }
   },
   "groups": [
