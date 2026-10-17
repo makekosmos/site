@@ -1,13 +1,13 @@
 {
-  "checked": "2026-10-13",
+  "checked": "2026-10-17",
   "sources": {
     "windows": {
       "repo": "makekosmos/cortex",
-      "ref": "v0.10.14"
+      "ref": "v0.10.18"
     },
     "macos": {
       "repo": "makekosmos/cortex",
-      "ref": "v0.10.14"
+      "ref": "v0.10.18"
     }
   },
   "groups": [
@@ -105,28 +105,32 @@
         },
         {
           "name": "Browse your data",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "no",
+          "macos": "no",
+          "note": "Data page removed from Manager",
           "ru": {
-            "name": "Просмотр данных"
+            "name": "Просмотр данных",
+            "note": "Страница данных удалена из менеджера"
           }
         },
         {
           "name": "Backups: create, verify, restore",
-          "windows": "yes",
-          "macos": "yes",
-          "note": "A snapshot is made every night",
+          "windows": "partial",
+          "macos": "partial",
+          "note": "Only the nightly snapshot; no controls in Manager",
           "ru": {
             "name": "Резервные копии: создание, проверка, восстановление",
-            "note": "Снимок создаётся каждую ночь"
+            "note": "Только ночной снимок; управления в менеджере нет"
           }
         },
         {
           "name": "Disk usage and cleanup",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "partial",
+          "macos": "partial",
+          "note": "Shows usage; no cleanup action in Manager",
           "ru": {
-            "name": "Занятое место и очистка"
+            "name": "Занятое место и очистка",
+            "note": "Показывает занятое место; очистки в менеджере нет"
           }
         },
         {
