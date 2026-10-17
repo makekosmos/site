@@ -1,9 +1,9 @@
 {
-  "checked": "2026-10-12",
+  "checked": "2026-10-17",
   "sources": {
-    "windows": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
-    "macos": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
-    "android": { "repo": "makekosmos/agenda-android", "ref": "v0.1.12" }
+    "windows": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.7" },
+    "macos": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.7" },
+    "android": { "repo": "makekosmos/agenda-android", "ref": "v0.1.20" }
   },
   "groups": [
     {
@@ -52,9 +52,9 @@
           "name": "Natural-language dates",
           "windows": "yes",
           "macos": "yes",
-          "android": "yes",
-          "note": "«завтра», «через неделю» in the title",
-          "ru": { "name": "Даты обычными словами", "note": "«завтра», «через неделю» прямо в названии" }
+          "android": "no",
+          "note": "Desktop only: «завтра», «через неделю» in the title",
+          "ru": { "name": "Даты обычными словами", "note": "Только на компьютере: «завтра», «через неделю» прямо в названии" }
         },
         {
           "name": "Notes on a task",
@@ -62,15 +62,6 @@
           "macos": "yes",
           "android": "yes",
           "ru": { "name": "Заметки к задаче" }
-        },
-        { "name": "Deadlines", "windows": "yes", "macos": "yes", "android": "yes", "ru": { "name": "Дедлайны" } },
-        {
-          "name": "Repeating tasks",
-          "windows": "yes",
-          "macos": "yes",
-          "android": "no",
-          "note": "On a schedule or after completion",
-          "ru": { "name": "Повторяющиеся задачи", "note": "По расписанию или после выполнения" }
         },
         {
           "name": "Cancelled tasks",
@@ -115,11 +106,11 @@
           "ru": { "name": "Поиск с опечатками", "note": "Прощает одну опечатку и ё/е" }
         },
         {
-          "name": "Sort by date, priority or title",
+          "name": "Sort by date or title",
           "windows": "yes",
           "macos": "yes",
           "android": "yes",
-          "ru": { "name": "Сортировка по дате, приоритету или названию" }
+          "ru": { "name": "Сортировка по дате или названию" }
         },
         {
           "name": "Group by project or date",
@@ -143,16 +134,16 @@
       "features": [
         {
           "name": "Statistics and streaks",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "partial",
+          "macos": "partial",
           "android": "yes",
-          "note": "7 and 30 days, current and best streak",
-          "ru": { "name": "Статистика и серии", "note": "7 и 30 дней, текущая и лучшая серия" }
+          "note": "Desktop has no streaks",
+          "ru": { "name": "Статистика и серии", "note": "На компьютере нет серий" }
         },
         {
           "name": "Share an activity card",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "no",
+          "macos": "no",
           "android": "yes",
           "ru": { "name": "Карточка активности, чтобы поделиться" }
         }
