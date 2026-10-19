@@ -1,9 +1,9 @@
 {
-  "checked": "2026-10-12",
+  "checked": "2026-10-19",
   "sources": {
-    "windows": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
-    "macos": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.4" },
-    "android": { "repo": "makekosmos/agenda-android", "ref": "v0.1.12" }
+    "windows": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.7" },
+    "macos": { "repo": "makekosmos/agenda-gpui", "ref": "v0.3.7" },
+    "android": { "repo": "makekosmos/agenda-android", "ref": "v0.1.20" }
   },
   "groups": [
     {
@@ -63,11 +63,11 @@
           "android": "yes",
           "ru": { "name": "Заметки к задаче" }
         },
-        { "name": "Deadlines", "windows": "yes", "macos": "yes", "android": "yes", "ru": { "name": "Дедлайны" } },
+        { "name": "Deadlines", "windows": "no", "macos": "no", "android": "no", "ru": { "name": "Дедлайны" } },
         {
           "name": "Repeating tasks",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "no",
+          "macos": "no",
           "android": "no",
           "note": "On a schedule or after completion",
           "ru": { "name": "Повторяющиеся задачи", "note": "По расписанию или после выполнения" }
@@ -221,6 +221,14 @@
           "macos": "yes",
           "android": "no",
           "ru": { "name": "Энергосбережение и VSync" }
+        },
+        {
+          "name": "Accent colour",
+          "windows": "partial",
+          "macos": "partial",
+          "android": "yes",
+          "note": "Desktop uses the accent from Mundus settings",
+          "ru": { "name": "Цвет акцента", "note": "На компьютере цвет берётся из настроек Mundus" }
         },
         {
           "name": "Self-update",
