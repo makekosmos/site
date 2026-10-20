@@ -1,13 +1,13 @@
 {
-  "checked": "2026-10-13",
+  "checked": "2026-10-20",
   "sources": {
     "windows": {
       "repo": "makekosmos/cortex",
-      "ref": "v0.10.14"
+      "ref": "v0.10.18"
     },
     "macos": {
       "repo": "makekosmos/cortex",
-      "ref": "v0.10.14"
+      "ref": "v0.10.18"
     }
   },
   "groups": [
@@ -105,16 +105,16 @@
         },
         {
           "name": "Browse your data",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "no",
+          "macos": "no",
           "ru": {
             "name": "Просмотр данных"
           }
         },
         {
           "name": "Backups: create, verify, restore",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "no",
+          "macos": "no",
           "note": "A snapshot is made every night",
           "ru": {
             "name": "Резервные копии: создание, проверка, восстановление",
@@ -123,10 +123,12 @@
         },
         {
           "name": "Disk usage and cleanup",
-          "windows": "yes",
-          "macos": "yes",
+          "windows": "partial",
+          "macos": "partial",
+          "note": "Shows usage, no manual cleanup",
           "ru": {
-            "name": "Занятое место и очистка"
+            "name": "Занятое место и очистка",
+            "note": "Показывает занятое место, очистки вручную пока нет"
           }
         },
         {
