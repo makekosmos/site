@@ -4,7 +4,7 @@
 
 ## Sources
 
-- Windows and macOS: `makekosmos/agenda-gpui`. Both columns come from the same code. Mark them differently only when the code has an OS-specific gate such as `cfg(target_os)`.
+- Windows and macOS: `makekosmos/agenda-unified`. Both columns come from the same code. Mark them differently only when the code has an OS-specific gate such as `cfg(target_os)`.
 - Android: `makekosmos/agenda-android`.
 
 Check the latest published release of each repo (`gh api repos/makekosmos/<repo>/releases/latest`), not `main`. The page describes what users can install.

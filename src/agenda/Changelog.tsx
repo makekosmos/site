@@ -24,7 +24,7 @@ const COPY = localize({
 export type Channel = { id: string; label: string; repo: string };
 
 export const AGENDA_CHANNELS: readonly Channel[] = [
-  { id: "desktop", label: "Windows · macOS", repo: "makekosmos/agenda-gpui" },
+  { id: "desktop", label: "Windows · macOS", repo: "makekosmos/agenda-unified" },
   { id: "android", label: "Android", repo: "makekosmos/agenda-android" },
 ];
 
